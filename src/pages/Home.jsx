@@ -1,0 +1,351 @@
+import { useRef } from "react";
+import { Link } from "react-router-dom";
+import Reveal from "../components/Reveal.jsx";
+import Stat from "../components/Stat.jsx";
+import HeroCanvas from "../components/HeroCanvas.jsx";
+import MediaVideo from "../components/MediaVideo.jsx";
+import MediaImage from "../components/MediaImage.jsx";
+import Accordion from "../components/Accordion.jsx";
+import DecodeText from "../components/DecodeText.jsx";
+import Magnetic from "../components/Magnetic.jsx";
+import useHeroParallax from "../hooks/useHeroParallax.js";
+import usePointerSignal from "../hooks/usePointerSignal.js";
+import {
+  stats,
+  pillars,
+  products,
+  differentiators,
+  integrations,
+  testimonials,
+  faqs,
+  homeProcess,
+  impact,
+} from "../data/site.js";
+import { video, img } from "../data/media.js";
+
+export default function Home() {
+  const heroVideoRef = useRef(null);
+  const heroRef = useHeroParallax();
+  const pillarsRef = usePointerSignal({ tilt: true });
+  const productsRef = usePointerSignal({ tilt: true });
+  const testiRef = usePointerSignal({ tilt: true });
+
+  // Reveal the real footage only once it has actually loaded; until then the
+  // animated cyber-defense canvas shows through (never a static image).
+  const onHeroReady = () => {
+    const el = heroVideoRef.current;
+    if (el && el.readyState >= 2 && el.videoWidth > 0) el.classList.add("is-ready");
+  };
+
+  return (
+    <>
+      {/* ---------- HERO with cyber-defense video ---------- */}
+      <section className="hero" ref={heroRef}>
+        <div className="hero__media">
+          {/* Animated "defender repelling attacks" base layer (always on). */}
+          <HeroCanvas />
+          {/* Real footage fades in over the canvas as soon as it can play. */}
+          <video
+            ref={heroVideoRef}
+            className="hero__video"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            onLoadedData={onHeroReady}
+          >
+            {video.hero.srcs.map((s) => (
+              <source key={s} src={s} type="video/mp4" />
+            ))}
+          </video>
+          <div className="hero__overlay" />
+        </div>
+
+        <div className="container hero__content">
+          <span className="hero__eyebrow">
+            AI-POWERED CYBERSECURITY · EST. 2023
+          </span>
+          <h1 className="hero__title">
+            <DecodeText text="Your Trusted " />
+            <span className="grad">Shield</span>
+            <br />
+            <DecodeText text="in the Digital Era" />
+          </h1>
+          <p className="hero__lead">
+            Advanced security, proactive compliance, and resilient operations —
+            powered by AI. Beta Tech Hub defends your digital infrastructure
+            against threats before they strike.
+          </p>
+          <div className="hero__actions">
+            <Magnetic>
+              <Link to="/products" className="btn btn--primary">Explore Solutions</Link>
+            </Magnetic>
+            <Link to="/contact" className="btn btn--ghost">Talk to an Expert</Link>
+          </div>
+
+          <div className="hero__stats">
+            {stats.map((s) => (
+              <Stat key={s.label} {...s} />
+            ))}
+          </div>
+        </div>
+
+        <Link to="/about" className="hero__scroll" aria-label="Scroll to content"><span /></Link>
+      </section>
+
+      {/* Opaque layer that scrolls up over the pinned hero / down over the footer */}
+      <div className="reveal-flow">
+      {/* ---------- Pillars ---------- */}
+      <section className="section">
+        <div className="container">
+          <Reveal className="section__head">
+            <span className="tag">How We Defend</span>
+            <h2 className="section__title">
+              <DecodeText text="Detect. Investigate. " /><span className="grad">Respond. Comply.</span>
+            </h2>
+            <p className="section__sub">
+              A continuous defense lifecycle across endpoints, networks, cloud, and applications.
+            </p>
+          </Reveal>
+          <div className="about__cards" style={{ marginTop: 0 }} ref={pillarsRef}>
+            {pillars.map((p, i) => (
+              <Reveal key={p.title} className="mini-card" data-tilt style={{ "--i": i }}>
+                <div className="mini-card__icon">{p.icon}</div>
+                <h3>{p.title}</h3>
+                <p>{p.text}</p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ---------- Integrations strip ---------- */}
+      <section className="section section--alt" style={{ paddingTop: 56, paddingBottom: 56 }}>
+        <div className="container">
+          <Reveal className="logos">
+            <span className="logos__label">Built on trusted, open technologies</span>
+            <div className="marquee">
+              <div className="marquee__track">
+                {integrations.map(({ name, logo }) => (
+                  <span className="logo-chip" key={name}>
+                    <img className="logo-chip__icon" src={logo} alt="" aria-hidden="true" loading="lazy" />
+                    {name}
+                  </span>
+                ))}
+                {integrations.map(({ name, logo }) => (
+                  <span className="logo-chip" key={`clone-${name}`} data-marquee-clone aria-hidden="true">
+                    <img className="logo-chip__icon" src={logo} alt="" loading="lazy" />
+                    {name}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ---------- Why choose us ---------- */}
+      <section className="section">
+        <div className="container media-split media-split--reverse">
+          <Reveal className="media-split__media">
+            <div className="media-frame media-frame--tall">
+              <MediaImage src={img.aboutTeam} alt="Security analysts at work" />
+              <span className="media-frame__badge">Your security partner</span>
+            </div>
+          </Reveal>
+          <Reveal className="media-split__text">
+            <span className="tag">Why Beta Tech Hub</span>
+            <h2 className="section__title">Security that's <span className="grad">smarter by design</span></h2>
+            <p className="lead">
+              We pair autonomous AI engines with seasoned analysts to give every
+              organization enterprise-grade protection — without enterprise complexity.
+            </p>
+            <div className="why-grid">
+              {differentiators.map((d) => (
+                <div className="why-item" key={d.title}>
+                  <div className="why-item__icon">{d.icon}</div>
+                  <div>
+                    <h3>{d.title}</h3>
+                    <p>{d.text}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ---------- Live operations video band ---------- */}
+      <section className="section section--alt">
+        <div className="container media-split">
+          <Reveal className="media-split__text">
+            <span className="tag">Security Operations</span>
+            <h2 className="section__title">A SOC that never <span className="grad">sleeps</span></h2>
+            <p className="lead">
+              Our analysts and AI engines monitor your environment around the
+              clock — correlating telemetry from every layer to surface real
+              threats and silence the noise.
+            </p>
+            <ul className="about__list">
+              <li>24/7 monitoring and threat hunting</li>
+              <li>Automated correlation across SIEM, EDR &amp; IDS/IPS</li>
+              <li>Rapid, guided incident response</li>
+            </ul>
+            <Link to="/platform" className="btn btn--primary">See the platform</Link>
+          </Reveal>
+          <Reveal className="media-split__media">
+            <MediaVideo src={video.soc.src} poster={video.soc.poster}>
+              <h3>Real-time threat monitoring</h3>
+              <p>Unified visibility across your entire estate.</p>
+            </MediaVideo>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ---------- Products teaser ---------- */}
+      <section className="section">
+        <div className="container">
+          <Reveal className="section__head">
+            <span className="tag">Product Catalog</span>
+            <h2 className="section__title">Three powerful <span className="grad">engines</span></h2>
+            <p className="section__sub">One unified platform — explore each solution in depth.</p>
+          </Reveal>
+          <div className="grc-grid" ref={productsRef}>
+            {products.map((p, i) => (
+              <Reveal key={p.id} className="grc-card" as="article" data-tilt style={{ "--i": i }}>
+                <Link to="/products" className="grc-card__media" aria-label={p.name}>
+                  <MediaImage src={p.image} alt={p.name} />
+                </Link>
+                <div className="grc-card__body">
+                  <h3>{p.name}</h3>
+                  <p>{p.tagline}</p>
+                  <Link to="/products" className="link-arrow">Learn more →</Link>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ---------- Threat-stream video band ---------- */}
+      <section className="section section--alt">
+        <div className="container media-split media-split--reverse">
+          <Reveal className="media-split__media">
+            <MediaVideo src={video.threats.src} poster={video.threats.poster}>
+              <h3>Stopping threats before they strike</h3>
+              <p>ML-driven detection across the full kill chain.</p>
+            </MediaVideo>
+          </Reveal>
+          <Reveal className="media-split__text">
+            <span className="tag">Threat Intelligence</span>
+            <h2 className="section__title">Stay ahead of the <span className="grad">attack</span></h2>
+            <p className="lead">
+              Behavioral analytics and threat intelligence detect both known
+              exploits and zero-day anomalies — so you respond before damage is done.
+            </p>
+            <Link to="/grc" className="btn btn--ghost">Explore GRC services</Link>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ---------- Impact metrics band ---------- */}
+      <section className="section">
+        <div className="container">
+          <Reveal className="metric-band">
+            <div className="metric-band__grid">
+              {impact.map((s) => (
+                <Stat key={s.label} {...s} />
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ---------- Testimonials ---------- */}
+      <section className="section section--glow section--glow-left">
+        <div className="container">
+          <Reveal className="section__head">
+            <span className="tag">Client Voices</span>
+            <h2 className="section__title">Trusted across <span className="grad">critical sectors</span></h2>
+          </Reveal>
+          <div className="testi-grid" ref={testiRef}>
+            {testimonials.map((t, i) => (
+              <Reveal key={t.quote} className="testi" as="figure" data-tilt style={{ "--i": i }}>
+                <blockquote>“{t.quote}”</blockquote>
+                <figcaption>
+                  <strong>{t.name}</strong>
+                  <span>{t.role}</span>
+                </figcaption>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ---------- FAQ ---------- */}
+      <section className="section section--alt section--grid">
+        <div className="container faq-layout">
+          <Reveal className="faq-layout__aside">
+            <span className="tag">FAQ</span>
+            <h2 className="section__title">Questions, <span className="grad">answered</span></h2>
+            <p className="lead">
+              The essentials on deployment, coverage, and compliance. Can't find
+              what you're looking for? Our team is one message away.
+            </p>
+            <div className="media-frame faq-layout__media">
+              <MediaImage src={img.contact} alt="Security specialists ready to help" />
+              <span className="media-frame__badge">We're here to help</span>
+            </div>
+            <Magnetic>
+              <Link to="/contact" className="btn btn--primary">Talk to an expert</Link>
+            </Magnetic>
+          </Reveal>
+          <Reveal className="faq-layout__main">
+            <Accordion items={faqs} />
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ---------- Process ---------- */}
+      <section className="section section--alt section--dots">
+        <div className="container">
+          <Reveal className="section__head">
+            <span className="tag">How It Works</span>
+            <h2 className="section__title">From first scan to <span className="grad">continuous defense</span></h2>
+            <p className="section__sub">A clear path to protection — most environments are live within days.</p>
+          </Reveal>
+          <div className="process-grid">
+            {homeProcess.map((s, i) => (
+              <Reveal key={s.n} className="process-step card-grad" style={{ "--i": i }}>
+                <span className="process-step__n">{s.n}</span>
+                <h3>{s.title}</h3>
+                <p>{s.text}</p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ---------- CTA band ---------- */}
+      <section className="section section--glow">
+        <div className="container">
+          <Reveal className="cta-band">
+            <div className="cta-band__media">
+              <MediaImage src={img.cta} alt="" />
+              <span className="cta-band__overlay" />
+            </div>
+            <div className="cta-band__inner">
+              <h2>Ready to build your digital shield?</h2>
+              <p>Partner with Beta Tech Hub to detect, investigate, and respond to threats faster.</p>
+              <Magnetic>
+                <Link to="/contact" className="btn btn--primary">Request a Consultation</Link>
+              </Magnetic>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+      </div>
+    </>
+  );
+}

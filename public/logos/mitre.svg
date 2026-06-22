@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="MITRE ATT&amp;CK">
+  <rect width="48" height="48" rx="12" fill="#C8102E"/>
+  <path d="M10 33V15h4.4l4.6 8 4.6-8H28v18h-4.3V22.6L19 30.4l-4.7-7.8V33z" fill="#fff"/>
+  <rect x="31" y="15" width="3.8" height="18" fill="#fff"/>
+</svg>

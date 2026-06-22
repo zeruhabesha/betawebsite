@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Beta Tech Hub — Your Trusted Shield in the Digital Era</title>
+  <meta name="description" content="Beta Tech Hub is a premier cybersecurity firm delivering AI-powered security solutions, Next-Gen SIEM, Advanced EDR, IDS/IPS, and Governance, Risk & Compliance services." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- Scroll progress bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Navigation -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="#home" class="brand" aria-label="Beta Tech Hub home">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="28" height="28"><path d="M16 2 4 7v8c0 7 5 12 12 15 7-3 12-8 12-15V7L16 2z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 16l3.5 3.5L21 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <span class="brand__text">Beta&nbsp;Tech&nbsp;Hub</span>
+      </a>
+
+      <nav class="nav__links" id="navLinks" aria-label="Primary">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#platform">Platform</a>
+        <a href="#products">Products</a>
+        <a href="#grc">GRC Services</a>
+        <a href="#contact" class="nav__cta">Contact</a>
+      </nav>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="hero__media">
+      <!-- Drop your video file at assets/hero.mp4 (and assets/hero-poster.jpg) to replace the animated fallback. -->
+      <video class="hero__video" autoplay muted loop playsinline poster="assets/hero-poster.jpg">
+        <source src="assets/hero.mp4" type="video/mp4" />
+      </video>
+      <!-- Animated canvas fallback: a defender shielding against incoming cyber-attacks -->
+      <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
+      <div class="hero__overlay"></div>
+    </div>
+
+    <div class="container hero__content">
+      <span class="hero__eyebrow reveal">ISSUE NO. 01 · MARCH 2026</span>
+      <h1 class="hero__title reveal">
+        Your Trusted <span class="grad">Shield</span><br />in the Digital Era
+      </h1>
+      <p class="hero__lead reveal">
+        Advanced security, proactive compliance, and resilient operations —
+        powered by AI. Beta Tech Hub defends your digital infrastructure
+        against threats before they strike.
+      </p>
+      <div class="hero__actions reveal">
+        <a href="#products" class="btn btn--primary">Explore Solutions</a>
+        <a href="#contact" class="btn btn--ghost">Talk to an Expert</a>
+      </div>
+
+      <div class="hero__stats reveal">
+        <div class="stat"><span class="stat__num" data-count="2023">0</span><span class="stat__label">Founded</span></div>
+        <div class="stat"><span class="stat__num" data-count="3" data-suffix="+">0</span><span class="stat__label">Integrated Engines</span></div>
+        <div class="stat"><span class="stat__num" data-count="24" data-suffix="/7">0</span><span class="stat__label">Threat Monitoring</span></div>
+        <div class="stat"><span class="stat__num" data-count="100" data-suffix="%">0</span><span class="stat__label">Centralized Visibility</span></div>
+      </div>
+    </div>
+
+    <a href="#about" class="hero__scroll" aria-label="Scroll to content"><span></span></a>
+  </section>
+
+  <!-- About -->
+  <section class="section" id="about">
+    <div class="container about">
+      <div class="about__text reveal">
+        <span class="tag">Who We Are</span>
+        <h2 class="section__title">Securing the digital world, <span class="grad">one layer at a time</span></h2>
+        <p>
+          Beta Tech Hub is a premier cybersecurity firm established in 2023,
+          dedicated to securing digital infrastructure and driving innovation
+          through AI-powered cybersecurity solutions.
+        </p>
+        <p>
+          This catalog translates complex cybersecurity offerings into clear,
+          authoritative information — built on our core promise of advanced
+          security, proactive compliance, and resilient operations.
+        </p>
+        <ul class="about__list">
+          <li>Unified visibility across endpoints, networks, cloud & apps</li>
+          <li>Machine-learning threat detection in real time</li>
+          <li>Built for enterprises and managed security service providers</li>
+        </ul>
+        <a href="https://www.betatechhub.com/about/" class="link-arrow" target="_blank" rel="noopener">Learn more about us →</a>
+      </div>
+      <div class="about__cards">
+        <div class="mini-card reveal"><div class="mini-card__icon">🛡️</div><h3>Detect</h3><p>Spot known and unknown threats with ML-driven analytics.</p></div>
+        <div class="mini-card reveal"><div class="mini-card__icon">🔎</div><h3>Investigate</h3><p>Deep forensic visibility across your entire estate.</p></div>
+        <div class="mini-card reveal"><div class="mini-card__icon">⚡</div><h3>Respond</h3><p>Automated containment to stop breaches at the source.</p></div>
+        <div class="mini-card reveal"><div class="mini-card__icon">📊</div><h3>Comply</h3><p>Turn regulatory pressure into a strategic advantage.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Unified Platform -->
+  <section class="section section--alt" id="platform">
+    <div class="container">
+      <div class="section__head reveal">
+        <span class="tag">Product Overview</span>
+        <h2 class="section__title">One unified platform, <span class="grad">three powerful engines</span></h2>
+        <p class="section__sub">
+          Next-Gen SIEM, Advanced IDS/IPS, and Advanced EDR combine to deliver
+          end-to-end protection — with multi-tenancy, RBAC, and automated
+          lifecycle management built for scale.
+        </p>
+      </div>
+
+      <div class="platform">
+        <div class="platform__diagram reveal" aria-hidden="true">
+          <div class="orbit">
+            <div class="core">Unified<br>Platform</div>
+            <div class="node node--1">SIEM</div>
+            <div class="node node--2">IDS/IPS</div>
+            <div class="node node--3">EDR</div>
+            <span class="ring ring--1"></span>
+            <span class="ring ring--2"></span>
+          </div>
+        </div>
+        <div class="platform__features">
+          <div class="feature reveal"><h3>End-to-end protection</h3><p>Unified visibility across endpoints, networks, cloud infrastructure, and applications.</p></div>
+          <div class="feature reveal"><h3>ML-based detection</h3><p>Behavior analytics and telemetry detect both known and unknown threats in real time.</p></div>
+          <div class="feature reveal"><h3>Built for scale</h3><p>Multi-tenancy, RBAC, and automated deployment for enterprises and MSSPs.</p></div>
+          <div class="feature reveal"><h3>Faster response</h3><p>Detect, investigate, and respond faster with centralized, continuous protection.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products (interactive tabs) -->
+  <section class="section" id="products">
+    <div class="container">
+      <div class="section__head reveal">
+        <span class="tag">Product Catalog</span>
+        <h2 class="section__title">Explore our <span class="grad">security solutions</span></h2>
+        <p class="section__sub">Select a product to dive into its capabilities and features.</p>
+      </div>
+
+      <div class="tabs reveal">
+        <div class="tabs__nav" role="tablist" aria-label="Products">
+          <button class="tabs__btn is-active" role="tab" aria-selected="true" data-tab="edr">Advanced EDR</button>
+          <button class="tabs__btn" role="tab" aria-selected="false" data-tab="ids">Advanced IDS/IPS</button>
+          <button class="tabs__btn" role="tab" aria-selected="false" data-tab="siem">Next-Gen SIEM</button>
+        </div>
+
+        <!-- EDR -->
+        <div class="tabs__panel is-active" id="tab-edr" role="tabpanel">
+          <div class="product">
+            <div class="product__intro">
+              <h3>Advanced EDR</h3>
+              <p class="product__tagline">Endpoint security from a reactive necessity into a proactive advantage.</p>
+              <p>Traditional antivirus is no longer sufficient. Advanced EDR empowers teams with deep endpoint visibility and rapid threat response — investigating and containing attacks with speed and precision through behavioral analysis and machine learning.</p>
+              <div class="chips">
+                <span>Behavioral Analysis</span><span>Digital Forensics</span><span>Automated Response</span><span>Patch Management</span>
+              </div>
+            </div>
+            <div class="product__features">
+              <div class="pf"><h4>ML-Based Threat Detection</h4><p>Identifies behavioral anomalies and emerging attack patterns.</p></div>
+              <div class="pf"><h4>Multi-Tenancy & RBAC</h4><p>Secure endpoint monitoring across multiple environments.</p></div>
+              <div class="pf"><h4>Automated Deployment</h4><p>Simplifies large-scale agent deployment and management.</p></div>
+              <div class="pf"><h4>Update & Patch Management</h4><p>Continuous updates maintain endpoint stability.</p></div>
+              <div class="pf"><h4>Threat Detection & Monitoring</h4><p>Continuously analyzes endpoint telemetry for incidents.</p></div>
+              <div class="pf"><h4>Visibility & Forensics</h4><p>Deep telemetry for investigation and forensic analysis.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- IDS/IPS -->
+        <div class="tabs__panel" id="tab-ids" role="tabpanel" hidden>
+          <div class="product">
+            <div class="product__intro">
+              <h3>Advanced IDS/IPS</h3>
+              <p class="product__tagline">A highly intelligent, automated gatekeeper for your network.</p>
+              <p>Combining the strengths of Suricata and Zeek, our IDS/IPS delivers full network visibility, real-time threat detection, and smart traffic analysis across on-premise, cloud, and hybrid environments — defending against known exploits and zero-day anomalies.</p>
+              <div class="chips">
+                <span>Suricata + Zeek</span><span>Real-Time Prevention</span><span>Protocol Analysis</span><span>Network Forensics</span>
+              </div>
+            </div>
+            <div class="product__features">
+              <div class="pf"><h4>Real-Time Detection & Prevention</h4><p>Monitors traffic to detect and block malicious activity instantly.</p></div>
+              <div class="pf"><h4>Deep Protocol Analysis</h4><p>Detailed visibility into network behavior.</p></div>
+              <div class="pf"><h4>ML-Based Detection</h4><p>Catches patterns traditional signatures miss.</p></div>
+              <div class="pf"><h4>Multi-Tenancy & RBAC</h4><p>Secure monitoring across environments or customers.</p></div>
+              <div class="pf"><h4>Network Forensics</h4><p>Enables deep investigation of network incidents.</p></div>
+              <div class="pf"><h4>Automated Infrastructure</h4><p>Simplifies deployment and scaling of sensors.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SIEM -->
+        <div class="tabs__panel" id="tab-siem" role="tabpanel" hidden>
+          <div class="product">
+            <div class="product__intro">
+              <h3>Next-Gen SIEM</h3>
+              <p class="product__tagline">The central nervous system of your Security Operations Center.</p>
+              <p>Integrating with Wazuh, our Next-Gen SIEM delivers advanced threat detection, centralized monitoring, and automated response across endpoints, cloud, and containerized infrastructure — combining log analytics, ML detection, and UEBA to identify attacks in real time.</p>
+              <div class="chips">
+                <span>Wazuh Integration</span><span>UEBA</span><span>Case Management</span><span>Agentic AI</span>
+              </div>
+            </div>
+            <div class="product__features">
+              <div class="pf"><h4>Threat Detection & Monitoring</h4><p>Analyzes logs and telemetry to detect incidents.</p></div>
+              <div class="pf"><h4>ML-Based Detection</h4><p>Improves accuracy and uncovers unseen threats.</p></div>
+              <div class="pf"><h4>UEBA</h4><p>Detects compromised accounts and insider threats.</p></div>
+              <div class="pf"><h4>Multi-Tenancy & RBAC</h4><p>Built for enterprises and MSSPs.</p></div>
+              <div class="pf"><h4>Incident Response</h4><p>Rapid response with case management and ticketing.</p></div>
+              <div class="pf"><h4>Agentic AI</h4><p>An AI chatbot simplifies interaction with the system.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GRC Services -->
+  <section class="section section--alt" id="grc">
+    <div class="container">
+      <div class="section__head reveal">
+        <span class="tag">Services Catalog</span>
+        <h2 class="section__title">Governance, Risk &amp; <span class="grad">Compliance</span></h2>
+        <p class="section__sub">
+          We transform compliance from a burdensome task into a strategic
+          competitive advantage — embedding strong governance that aligns your
+          security posture with your business objectives.
+        </p>
+      </div>
+
+      <div class="grc-grid">
+        <article class="grc-card reveal"><h3>Governance Services</h3><p>Establish foundational cybersecurity and information governance structures aligned with leadership vision.</p></article>
+        <article class="grc-card reveal"><h3>Risk Management</h3><p>Identify, assess, and manage cybersecurity risks that impact operations and information assets.</p></article>
+        <article class="grc-card reveal"><h3>Compliance & Assurance</h3><p>Meet regulatory and industry requirements with structured, continuously-adhered programs.</p></article>
+        <article class="grc-card reveal"><h3>Integrated GRC Platform</h3><p>Consolidate governance, risk, and compliance into a single technological ecosystem.</p></article>
+        <article class="grc-card reveal"><h3>Training & Capacity</h3><p>Up-skill internal teams — from CISO leadership to ISO 27001 implementation.</p></article>
+        <article class="grc-card reveal"><h3>Continuous Assurance</h3><p>Ongoing monitoring that sustains cybersecurity maturity over time.</p></article>
+      </div>
+
+      <div class="approach reveal">
+        <h3 class="approach__title">Our phased approach</h3>
+        <ol class="approach__steps">
+          <li><span>01</span>Discovery &amp; Alignment</li>
+          <li><span>02</span>Assessment &amp; Gap Identification</li>
+          <li><span>03</span>Design &amp; Planning</li>
+          <li><span>04</span>Implementation &amp; Enablement</li>
+          <li><span>05</span>Monitoring &amp; Continuous Assurance</li>
+        </ol>
+      </div>
+
+      <div class="sectors reveal">
+        <span class="sectors__label">Sectors we serve</span>
+        <div class="sectors__list">
+          <span>Public</span><span>Finance</span><span>Defense</span><span>Telecom</span><span>Critical Infrastructure</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / CTA -->
+  <section class="section contact" id="contact">
+    <div class="container contact__inner">
+      <div class="contact__text reveal">
+        <span class="tag">Contact Us</span>
+        <h2 class="section__title">Ready to build your <span class="grad">digital shield?</span></h2>
+        <p>Partner with Beta Tech Hub to detect, investigate, and respond to threats faster — while maintaining continuous protection across your entire infrastructure.</p>
+        <ul class="contact__details">
+          <li><span>✉️</span> <a href="mailto:info@betatechhub.com">info@betatechhub.com</a></li>
+          <li><span>📞</span> <a href="tel:+251909523769">+251 90 952 3769</a></li>
+          <li><span>🌐</span> <a href="https://www.betatechhub.com" target="_blank" rel="noopener">www.betatechhub.com</a></li>
+          <li><span>📍</span> Garamuleta Luxury Apartment, Wollo Sefer, Bole, Addis Ababa, Ethiopia</li>
+        </ul>
+      </div>
+
+      <form class="contact__form reveal" id="contactForm" novalidate>
+        <div class="field">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" required placeholder="Jane Doe" />
+        </div>
+        <div class="field">
+          <label for="email">Work Email</label>
+          <input type="email" id="email" name="email" required placeholder="jane@company.com" />
+        </div>
+        <div class="field">
+          <label for="interest">I'm interested in</label>
+          <select id="interest" name="interest">
+            <option>Unified Platform</option>
+            <option>Advanced EDR</option>
+            <option>Advanced IDS/IPS</option>
+            <option>Next-Gen SIEM</option>
+            <option>GRC Services</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="4" placeholder="Tell us about your security needs…"></textarea>
+        </div>
+        <button type="submit" class="btn btn--primary btn--block">Request a Consultation</button>
+        <p class="form-note" id="formNote" hidden>✓ Thank you — we'll be in touch shortly.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <span class="brand__text">Beta Tech Hub</span>
+        <p>Your Trusted Shield in the Digital Era.</p>
+      </div>
+      <nav class="footer__nav" aria-label="Footer">
+        <a href="#about">About</a>
+        <a href="#platform">Platform</a>
+        <a href="#products">Products</a>
+        <a href="#grc">GRC Services</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <p class="footer__copy">© <span id="year"></span> Beta Tech Hub. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="ELK Stack">
+  <rect width="48" height="48" rx="12" fill="#0B2E4F"/>
+  <rect x="13" y="13" width="22" height="6" rx="2" fill="#00BFB3"/>
+  <rect x="13" y="21" width="22" height="6" rx="2" fill="#FEC514"/>
+  <rect x="13" y="29" width="22" height="6" rx="2" fill="#F04E98"/>
+</svg>
