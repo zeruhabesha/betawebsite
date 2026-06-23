@@ -203,7 +203,7 @@ export default function About() {
                 <div className="team-card__body">
                   <span className="team-card__name">{m.name}</span>
                   <span className="team-card__role">{m.role}</span>
-                  <p className="team-card__bio">{m.bio}</p>
+                  {m.bio && <p className="team-card__bio">{m.bio}</p>}
                   {/* <a
                     className="team-card__social"
                     href={m.linkedin}
