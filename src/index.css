@@ -210,16 +210,41 @@ main.is-home { background: var(--bg); }
 }
 @keyframes scrollDot { 0%{ opacity:0; top:8px } 30%{ opacity:1 } 100%{ opacity:0; top:24px } }
 
-/* ---------- Page header (inner pages) ---------- */
-.page-header { position: relative; padding: 150px 0 70px; overflow: hidden; }
-.page-header__media { position: absolute; inset: 0; z-index: 0; }
-.page-header__img { width: 100%; height: 100%; object-fit: cover; transform-origin: center; }
-/* Slow ken-burns drift on inner-page header images (motion-safe). */
-@media (prefers-reduced-motion: no-preference) {
-  .page-header__img { animation: kenburns 26s ease-in-out infinite alternate; }
+/* ---------- Page header (inner pages) — animated cyber-pattern background ---------- */
+.page-header {
+  position: relative; padding: 150px 0 70px; overflow: hidden; isolation: isolate; color: #fff;
+  background:
+    radial-gradient(760px 460px at 78% -5%, rgba(46,151,212,.30), transparent 60%),
+    radial-gradient(620px 420px at 6% 108%, rgba(15,87,134,.34), transparent 62%),
+    linear-gradient(160deg, #060c18 0%, #0a1526 55%, #0b2036 100%);
 }
-@keyframes kenburns { from { transform: scale(1.02); } to { transform: scale(1.1) translate(-1.5%, 1%); } }
-.page-header__overlay { position: absolute; inset: 0; background: var(--overlay); }
+/* Brand grid lines, masked so they fade toward the edges. */
+.page-header::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--brand-2) 16%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--brand-2) 16%, transparent) 1px, transparent 1px);
+  background-size: 46px 46px;
+  -webkit-mask: radial-gradient(125% 115% at 72% 0%, #000 26%, transparent 78%);
+  mask: radial-gradient(125% 115% at 72% 0%, #000 26%, transparent 78%);
+}
+/* Faint dot field over the grid intersections. */
+.page-header::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .5;
+  background-image: radial-gradient(color-mix(in srgb, var(--brand-2) 26%, transparent) 1px, transparent 1.6px);
+  background-size: 46px 46px;
+  -webkit-mask: radial-gradient(110% 100% at 75% 5%, #000 22%, transparent 72%);
+  mask: radial-gradient(110% 100% at 75% 5%, #000 22%, transparent 72%);
+}
+/* Slow horizontal scan line sweeping down the header. */
+.page-header__scan {
+  position: absolute; left: 0; right: 0; top: -2%; height: 2px; z-index: -1; pointer-events: none; opacity: 0;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--brand-2) 75%, transparent) 48%, transparent);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .page-header__scan { animation: hdrScan 7s linear infinite; }
+}
+@keyframes hdrScan { 0% { top: -2%; opacity: 0; } 14% { opacity: .55; } 86% { opacity: .55; } 100% { top: 102%; opacity: 0; } }
 .page-header__content { position: relative; z-index: 2; color: #fff; max-width: 760px; }
 .page-header__title { font-size: clamp(2rem, 5vw, 3.4rem); letter-spacing: -.5px; margin: 18px 0 14px; color: #fff; }
 .page-header__sub { color: #d4dcec; font-size: 1.08rem; max-width: 620px; }

@@ -1,14 +1,12 @@
-import MediaImage from "./MediaImage.jsx";
 import DecodeText from "./DecodeText.jsx";
 
-/* Banner header for inner (non-home) pages: background image + title block. */
-export default function PageHeader({ tag, title, sub, image }) {
+/* Banner header for inner (non-home) pages: animated cyber-pattern background
+   (dark base + brand grid + glow + scan line). The `image` prop is accepted
+   for backward-compatibility but no longer used. */
+export default function PageHeader({ tag, title, sub }) {
   return (
     <section className="page-header">
-      <div className="page-header__media" aria-hidden="true">
-        <MediaImage src={image} alt="" className="page-header__img" />
-        <span className="page-header__overlay" />
-      </div>
+      <span className="page-header__scan" aria-hidden="true" />
       <div className="container page-header__content">
         {tag && <span className="hero__eyebrow">{tag}</span>}
         <DecodeText as="h1" className="page-header__title" text={title} />

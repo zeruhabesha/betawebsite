@@ -36,25 +36,25 @@ export const intents = [
   },
   {
     id: "siem",
-    keywords: ["siem", "log", "logs", "correlation", "ueba", "case management", "wazuh"],
+    keywords: ["siem", "log", "logs", "correlation", "ueba", "case management", "wazuh", "what is siem", "siem mean", "siem stand"],
     answer:
-      "Our Next-Gen SIEM (built on Wazuh) centralizes detection and response across endpoints, cloud, and containers — combining log analytics, ML detection, UEBA, and case management to catch attacks in real time.",
+      "SIEM stands for Security Information and Event Management — it collects and correlates logs and telemetry from across your estate to surface attacks a single tool would miss. Our Next-Gen SIEM (built on Wazuh) adds ML detection, UEBA (user & entity behavior analytics that flags abnormal accounts), and case management for real-time response.",
     link: { to: "/products", label: "See Next-Gen SIEM" },
     chips: ["Advanced EDR", "Advanced IDS/IPS", "Talk to an expert"],
   },
   {
     id: "edr",
-    keywords: ["edr", "endpoint", "endpoints", "antivirus", "device", "devices", "laptop", "forensics"],
+    keywords: ["edr", "endpoint", "endpoints", "antivirus", "device", "devices", "laptop", "forensics", "what is edr", "edr mean", "edr stand"],
     answer:
-      "Advanced EDR gives deep endpoint visibility with ML-based behavioral detection and automated containment — investigating and stopping attacks with speed and precision, well beyond traditional antivirus.",
+      "EDR stands for Endpoint Detection and Response. Where traditional antivirus only blocks known signatures, EDR continuously watches how endpoints behave to detect, investigate, and automatically contain novel attacks. Our Advanced EDR is ML-driven with deep forensics for fast, precise response.",
     link: { to: "/products", label: "See Advanced EDR" },
     chips: ["Next-Gen SIEM", "Advanced IDS/IPS", "Pricing"],
   },
   {
     id: "ids",
-    keywords: ["ids", "ips", "network", "traffic", "suricata", "zeek", "intrusion", "packet"],
+    keywords: ["ids", "ips", "network", "traffic", "suricata", "zeek", "intrusion", "packet", "what is ids", "ids mean", "ids stand"],
     answer:
-      "Advanced IDS/IPS (powered by Suricata + Zeek) delivers full network visibility, real-time threat detection and prevention, and deep protocol analysis across on-prem, cloud, and hybrid environments.",
+      "IDS/IPS stands for Intrusion Detection / Prevention System — it inspects network traffic to spot malicious activity (IDS) and actively block it inline (IPS). Our Advanced IDS/IPS pairs Suricata + Zeek signatures with deep protocol and behavioral analysis across on-prem, cloud, and hybrid networks.",
     link: { to: "/products", label: "See Advanced IDS/IPS" },
     chips: ["Next-Gen SIEM", "Deployment options", "Talk to an expert"],
   },
@@ -68,11 +68,11 @@ export const intents = [
   },
   {
     id: "grc",
-    keywords: ["grc", "compliance", "governance", "risk", "iso", "iso 27001", "audit", "regulation", "regulatory", "framework", "soc 2", "gdpr", "hipaa", "pci"],
+    keywords: ["grc", "compliance", "governance", "risk", "iso", "iso 27001", "audit", "regulation", "regulatory", "framework", "frameworks", "soc 2", "gdpr", "hipaa", "pci", "what is grc", "grc mean", "grc stand"],
     answer:
-      "Our GRC services turn compliance into a strategic advantage — aligning your security posture with frameworks like ISO 27001, SOC 2, NIST, GDPR, PCI DSS, and HIPAA through a structured, continuously-assured program.",
+      "GRC stands for Governance, Risk & Compliance — the discipline of aligning security with business goals (governance), identifying and managing what could go wrong (risk), and meeting legal & industry obligations like ISO 27001, SOC 2, NIST, GDPR, PCI DSS, and HIPAA (compliance). We run it as a structured, continuously-assured program — not a one-off audit — so it becomes a competitive advantage.",
     link: { to: "/grc", label: "Explore GRC services" },
-    chips: ["Pricing", "Talk to an expert", "What frameworks?"],
+    chips: ["What is ISO 27001?", "Pricing", "Talk to an expert"],
   },
   {
     id: "pricing",
@@ -107,15 +107,15 @@ export const intents = [
   },
   {
     id: "soc",
-    keywords: ["soc", "monitoring", "24/7", "24 7", "mdr", "managed", "detection and response", "threat hunting", "analyst", "around the clock"],
+    keywords: ["soc", "monitoring", "24/7", "24 7", "mdr", "managed", "detection and response", "threat hunting", "analyst", "around the clock", "what is soc", "what is mdr", "security operations"],
     answer:
-      "Our SOC and AI engines monitor your environment around the clock — triaging alerts and guiding containment so real threats are handled fast, day or night, while the noise is filtered out.",
+      "A SOC (Security Operations Center) is the people and tooling that monitor and respond to threats around the clock. Ours pairs human analysts with AI engines for 24/7 detection, triage, and guided containment — effectively Managed Detection & Response (MDR), so real threats are handled fast while the noise is filtered out.",
     link: { to: "/platform", label: "See the platform" },
     chips: ["What do you defend against?", "Pricing", "Talk to an expert"],
   },
   {
     id: "integrations",
-    keywords: ["integration", "integrations", "integrate", "technology", "technologies", "open source", "open standards", "stack", "elk", "opensearch", "docker", "mitre"],
+    keywords: ["integration", "integrations", "integrate", "technology", "technologies", "open source", "open standards", "stack", "elk", "opensearch", "docker"],
     answer:
       "We build on proven open standards — Wazuh, Suricata, Zeek, the ELK/OpenSearch stack, the MITRE ATT&CK framework, Docker, and more — so you're never locked into a black box.",
     link: { to: "/platform", label: "See the platform" },
@@ -127,6 +127,70 @@ export const intents = [
     answer: `${company.name} is a premier cybersecurity firm founded in ${company.founded}, based in Addis Ababa, Ethiopia — delivering AI-powered security and GRC to organizations of every size.`,
     link: { to: "/about", label: "About us" },
     chips: ["What do you offer?", "Talk to an expert"],
+  },
+  {
+    id: "iso27001",
+    keywords: ["iso 27001", "27001", "what is iso", "iso mean", "iso certification", "isms"],
+    answer:
+      "ISO 27001 is the international standard for an Information Security Management System (ISMS) — a documented, risk-based framework of policies and controls for protecting information. Certification proves to customers and regulators that security is managed systematically. Our GRC program guides you from gap assessment to certification and continuous assurance.",
+    link: { to: "/grc", label: "Explore GRC services" },
+    chips: ["What is GRC?", "What frameworks?", "Talk to an expert"],
+  },
+  {
+    id: "mitre",
+    keywords: ["mitre", "att ck", "attack framework", "mitre framework", "tactics techniques", "kill chain"],
+    answer:
+      "MITRE ATT&CK is a free, globally-used knowledge base of the real tactics and techniques attackers use across the kill chain. We map our detections to ATT&CK so you can see exactly which adversary behaviors are covered and where your gaps are — turning alerts into context.",
+    link: { to: "/platform", label: "See the platform" },
+    chips: ["What do you defend against?", "Threat intelligence", "Talk to an expert"],
+  },
+  {
+    id: "zero-trust",
+    keywords: ["zero trust", "zero-trust", "zerotrust", "least privilege", "never trust"],
+    answer:
+      "Zero trust is a model that never assumes trust by default — every user, device, and request is continuously verified, with least-privilege access, rather than trusting anything just because it's 'inside' the network. Our unified visibility, RBAC, and behavioral detection give you the telemetry and controls a zero-trust approach depends on.",
+    link: { to: "/platform", label: "See the platform" },
+    chips: ["What is UEBA?", "Deployment options", "Talk to an expert"],
+  },
+  {
+    id: "data-breach",
+    keywords: ["data breach", "breach", "breached", "leak", "leaked", "exfiltration", "stolen data", "incident"],
+    answer:
+      "A data breach is unauthorized access to — or theft of — sensitive data, often after an attacker dwells in a network undetected. The whole point of our platform is to shrink that dwell time: detect intrusions early and contain them automatically before they become a breach, then respond fast if one occurs.",
+    link: { to: "/platform", label: "What we defend against" },
+    chips: ["What is ransomware?", "How does it work?", "Talk to an expert"],
+  },
+  {
+    id: "threat-intel",
+    keywords: ["threat intelligence", "threat intel", "intelligence", "ioc", "indicators", "ttps", "threat feed"],
+    answer:
+      "Threat intelligence is curated knowledge about attackers — their tactics, techniques, infrastructure, and indicators of compromise (IOCs). We feed it into detection so you catch known campaigns quickly, and combine it with ML/behavioral analytics to catch the zero-days that intel hasn't seen yet.",
+    link: { to: "/platform", label: "See the platform" },
+    chips: ["What is MITRE ATT&CK?", "What do you defend against?", "Talk to an expert"],
+  },
+  {
+    id: "vulnerability",
+    keywords: ["vulnerability", "vulnerabilities", "cve", "patch", "patching", "exposure", "weakness", "exploit"],
+    answer:
+      "A vulnerability is a weakness — a misconfiguration, unpatched flaw, or exposure — that an attacker can exploit. Our platform surfaces risky activity around those weaknesses and provides patch/update visibility, while our GRC program helps you prioritize and remediate the ones that matter most to your risk.",
+    link: { to: "/grc", label: "Explore GRC services" },
+    chips: ["What is a data breach?", "Pricing", "Talk to an expert"],
+  },
+  {
+    id: "difference",
+    keywords: ["difference", "differ", "between", "versus", "vs", "compare", "comparison", "which one"],
+    answer:
+      "Good question. EDR protects endpoints, IDS/IPS watches the network, and SIEM correlates the signals from both — plus cloud and apps — into one picture. On our platform all three share a single data fabric, so detection, investigation, and response stay in sync instead of living in separate, disconnected tools.",
+    link: { to: "/products", label: "Explore products" },
+    chips: ["What is SIEM?", "What is EDR?", "How does it work?"],
+  },
+  {
+    id: "why",
+    keywords: ["why", "why do i need", "why cybersecurity", "do i need", "benefit", "benefits", "value", "worth it", "matter"],
+    answer:
+      "Because attacks now move faster than manual defenses, and a single incident can mean downtime, regulatory fines, and lost customer trust. We give organizations of every size enterprise-grade, AI-powered protection — detection, response, and compliance — without enterprise complexity or cost.",
+    link: { to: "/about", label: "Why Beta Tech Hub" },
+    chips: ["What do you offer?", "Pricing", "Talk to an expert"],
   },
   {
     id: "thanks",
