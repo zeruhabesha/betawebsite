@@ -74,7 +74,7 @@ export default function Products() {
         <div className="container media-split">
           <Reveal className="media-split__media">
             <div className="media-frame">
-              <MediaImage src={img.platformGrid} alt="Unified security platform" />
+              <video className="media-img" src={img.platformGrid22} autoPlay muted loop playsInline aria-label="Unified security platform" />
               <span className="media-frame__badge">Single data fabric</span>
             </div>
           </Reveal>

@@ -16,12 +16,12 @@ export const img = {
   heroPoster: u("1550751827-4bd374c3f58b", 1920, 1080), // glowing red padlock — cyber defense
   // About
   aboutTeam: "/media/2.jpg", // analyst at desk + shield (brand image) — was u("1573164713714-d95e436ab8d6")
-   aboutTeam2: "/media/o.mp4", // analyst at desk + shield (brand image) — was u("1573164713714-d95e436ab8d6")
+  aboutTeam2: "/media/o.mp4", // analyst at desk + shield (brand image) — was u("1573164713714-d95e436ab8d6")
  aboutSoc: "/media/3.jpg", // shield on circuit board (brand image) — was u("1518770660439-4636190af475")
  aboutSoc1: "/media/l.mp4", // shield on circuit board (brand image) — was u("1518770660439-4636190af475")
 
  // Platform
-  platformGrid: u("1451187580459-43490279c0fa", 1200, 800), // connected network globe
+  platformGrid22:  "/media/1.mp4",
   platformGrid3: "/media/j.jpg",
  platformData: u("1558494949-ef010cbdcc31", 1200, 800), // datacenter cabling
   // Products (animated brand gifs)
