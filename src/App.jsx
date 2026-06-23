@@ -9,11 +9,22 @@ import GRC from "./pages/GRC.jsx";
 import Contact from "./pages/Contact.jsx";
 import NotFound from "./pages/NotFound.jsx";
 
-/* Scroll to top whenever the route changes (multi-page behaviour). */
-function ScrollToTop() {
+/* Per-route document titles (SEO + history/UX). */
+const TITLES = {
+  "/": "Beta Tech Hub — Your Trusted Shield in the Digital Era",
+  "/about": "About — Beta Tech Hub",
+  "/platform": "Platform — Beta Tech Hub",
+  "/products": "Products — Beta Tech Hub",
+  "/grc": "GRC Services — Beta Tech Hub",
+  "/contact": "Contact — Beta Tech Hub",
+};
+
+/* Scroll to top + set the document title whenever the route changes. */
+function RouteEffects() {
   const { pathname } = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
+    document.title = TITLES[pathname] || "Page not found — Beta Tech Hub";
   }, [pathname]);
   return null;
 }
@@ -21,7 +32,7 @@ function ScrollToTop() {
 export default function App() {
   return (
     <>
-      <ScrollToTop />
+      <RouteEffects />
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />

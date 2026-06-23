@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { navLinks, company, products, social } from "../data/site.js";
 
@@ -18,6 +18,7 @@ const ICONS = {
 export default function Footer() {
   const year = new Date().getFullYear();
   const [subscribed, setSubscribed] = useState(false);
+  const statusRef = useRef(null);
 
   const onSubscribe = (e) => {
     e.preventDefault();
@@ -28,6 +29,9 @@ export default function Footer() {
     }
     setSubscribed(true);
     form.reset();
+    // The form (with the focused submit button) unmounts — move focus to the
+    // status message so keyboard focus stays coherent with the SR announcement.
+    requestAnimationFrame(() => statusRef.current?.focus());
     setTimeout(() => setSubscribed(false), 5000);
   };
 
@@ -41,7 +45,9 @@ export default function Footer() {
             <p>Security insights, product updates, and threat intelligence — straight to your inbox.</p>
           </div>
           {subscribed ? (
-            <p className="footer__news-ok" role="status">✓ You're subscribed — watch your inbox.</p>
+            <p ref={statusRef} tabIndex={-1} className="footer__news-ok" role="status">
+              ✓ You're subscribed — watch your inbox.
+            </p>
           ) : (
             <form className="footer__news" onSubmit={onSubscribe} noValidate>
               <input

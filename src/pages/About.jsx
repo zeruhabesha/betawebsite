@@ -5,7 +5,7 @@ import MediaImage from "../components/MediaImage.jsx";
 import MediaVideo from "../components/MediaVideo.jsx";
 import Magnetic from "../components/Magnetic.jsx";
 import usePointerSignal from "../hooks/usePointerSignal.js";
-import { pillars, company, team, values } from "../data/site.js";
+import { pillars, company, team, values, milestones } from "../data/site.js";
 import { img, video } from "../data/media.js";
 
 export default function About() {
@@ -50,16 +50,36 @@ export default function About() {
 
           <Reveal className="about__media">
             <div className="media-frame">
-              <MediaImage src={img.aboutSoc} alt="Network infrastructure" />
+              <video className="media-img" src={img.aboutSoc1} autoPlay muted loop playsInline aria-label="Network infrastructure" />
               <span className="media-frame__badge">Unified visibility</span>
             </div>
             <div className="media-frame">
-              <MediaImage src={img.platformData} alt="Data center" />
+              <MediaImage src={img.aboutSoc} alt="Data center" />
             </div>
             <div className="media-frame">
-              <MediaImage src={img.contact} alt="Security team collaborating" />
+              <MediaImage src={img.contact1} alt="Security team collaborating" />
             </div>
           </Reveal>
+        </div>
+      </section>
+
+      {/* Milestones */}
+      <section className="section">
+        <div className="container">
+          <Reveal className="section__head">
+            <span className="tag">Our Journey</span>
+            <h2 className="section__title">Milestones along <span className="grad">the way</span></h2>
+          </Reveal>
+          <ol className="timeline">
+            {milestones.map((m) => (
+              <Reveal key={m.year} className="timeline__item" as="li">
+                <span className="timeline__dot" aria-hidden="true" />
+                <span className="timeline__year">{m.year}</span>
+                <h3>{m.title}</h3>
+                <p>{m.text}</p>
+              </Reveal>
+            ))}
+          </ol>
         </div>
       </section>
 
@@ -139,8 +159,10 @@ export default function About() {
           <div className="team-grid" ref={teamRef}>
             {team.map((m, i) => (
               <Reveal key={m.name} className="team-card" as="article" data-tilt style={{ "--i": i }}>
-                <MediaImage src={m.img} alt={m.name} className="team-card__img" />
-                <div className="team-card__overlay">
+                <div className="team-card__photo">
+                  <MediaImage src={m.img} alt={m.name} className="team-card__img" />
+                </div>
+                <div className="team-card__body">
                   <span className="team-card__name">{m.name}</span>
                   <span className="team-card__role">{m.role}</span>
                   <p className="team-card__bio">{m.bio}</p>

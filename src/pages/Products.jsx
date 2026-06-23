@@ -5,7 +5,7 @@ import Reveal from "../components/Reveal.jsx";
 import MediaImage from "../components/MediaImage.jsx";
 import Magnetic from "../components/Magnetic.jsx";
 import usePointerSignal from "../hooks/usePointerSignal.js";
-import { products, differentiators } from "../data/site.js";
+import { products, differentiators, plans, comparison } from "../data/site.js";
 import { img } from "../data/media.js";
 
 export default function Products() {
@@ -19,7 +19,7 @@ export default function Products() {
         tag="Product Catalog"
         title="Explore our security solutions"
         sub="Select a product to dive into its capabilities and features."
-        image={img.siem}
+        image={img.platformData}
       />
 
       <section className="section">
@@ -73,7 +73,7 @@ export default function Products() {
       <section className="section">
         <div className="container media-split">
           <Reveal className="media-split__media">
-            <div className="media-frame media-frame--tall">
+            <div className="media-frame">
               <MediaImage src={img.platformGrid} alt="Unified security platform" />
               <span className="media-frame__badge">Single data fabric</span>
             </div>
@@ -94,6 +94,78 @@ export default function Products() {
               ))}
             </div>
           </Reveal>
+        </div>
+      </section>
+
+      {/* Comparison */}
+      <section className="section section--alt">
+        <div className="container">
+          <Reveal className="section__head">
+            <span className="tag">The Difference</span>
+            <h2 className="section__title">Beyond <span className="grad">traditional security</span></h2>
+            <p className="section__sub">One integrated platform replaces a stack of disconnected point tools.</p>
+          </Reveal>
+          <Reveal className="compare" role="table" aria-label="Beta Tech Hub vs. traditional security">
+            <div className="compare__row compare__row--head" role="row">
+              <span role="columnheader">Capability</span>
+              <span role="columnheader">Traditional</span>
+              <span role="columnheader" className="compare__brand">Beta Tech Hub</span>
+            </div>
+            {comparison.map((c) => (
+              <div className="compare__row" key={c.feature} role="row">
+                <span className="compare__feature" role="rowheader">{c.feature}</span>
+                <span className="compare__cell" role="cell">
+                  {c.them ? (
+                    <span className="compare__yes"><span aria-hidden="true">✓</span><span className="sr-only">Included</span></span>
+                  ) : (
+                    <span className="compare__no"><span aria-hidden="true">—</span><span className="sr-only">Not included</span></span>
+                  )}
+                </span>
+                <span className="compare__cell" role="cell">
+                  {c.us ? (
+                    <span className="compare__yes"><span aria-hidden="true">✓</span><span className="sr-only">Included</span></span>
+                  ) : (
+                    <span className="compare__no"><span aria-hidden="true">—</span><span className="sr-only">Not included</span></span>
+                  )}
+                </span>
+              </div>
+            ))}
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Plans */}
+      <section className="section section--dots">
+        <div className="container">
+          <Reveal className="section__head">
+            <span className="tag">Plans</span>
+            <h2 className="section__title">Protection that <span className="grad">scales with you</span></h2>
+            <p className="section__sub">Transparent, tailored packages — pick a starting point and we'll shape it to your environment.</p>
+          </Reveal>
+          <div className="plans">
+            {plans.map((p) => (
+              <Reveal
+                key={p.name}
+                className={`plan-card ${p.featured ? "plan-card--featured" : ""}`}
+                as="article"
+              >
+                <div className="plan-card__name">{p.name}</div>
+                <p className="plan-card__blurb">{p.blurb}</p>
+                <div className="plan-card__price">{p.price} <small>/ pricing</small></div>
+                <ul className="plan-card__features">
+                  {p.features.map((f) => (
+                    <li key={f}>{f}</li>
+                  ))}
+                </ul>
+                <Link
+                  to="/contact"
+                  className={`btn ${p.featured ? "btn--primary" : "btn--ghost"} btn--block`}
+                >
+                  {p.cta}
+                </Link>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 

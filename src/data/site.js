@@ -187,6 +187,30 @@ export const faqs = [
     q: "Can you help us meet compliance requirements?",
     a: "Absolutely. Our GRC services align your security posture with regulatory and industry frameworks like ISO 27001 through a structured, continuously-assured program.",
   },
+  {
+    q: "What's the difference between SIEM, EDR, and IDS/IPS?",
+    a: "EDR protects endpoints, IDS/IPS watches network traffic, and the SIEM correlates signals from both — plus cloud and apps — into one picture. On our platform they share a single data fabric, so detection, investigation, and response stay in sync instead of living in separate tools.",
+  },
+  {
+    q: "Do you offer 24/7 managed detection and response?",
+    a: "Yes. Our SOC and AI engines monitor your environment around the clock, triaging alerts and guiding containment so real threats are handled fast — day or night — while the noise is filtered out.",
+  },
+  {
+    q: "How is the platform priced?",
+    a: "Pricing is tailored to your environment, data volume, and the engines you need. We start with a short discovery call and map the right mix of SIEM, EDR, IDS/IPS, and GRC — there are no public per-seat tiers because security needs vary widely.",
+  },
+  {
+    q: "Where is my data stored, and who can access it?",
+    a: "You choose the footprint — on-premise, cloud, or hybrid — so sensitive data can stay inside your perimeter. Access is governed by role-based controls and full audit logging, so every action is attributable.",
+  },
+  {
+    q: "How does the AI handle threats — and is it safe to let it act?",
+    a: "Our ML models surface anomalies and prioritize what matters, and agentic AI can recommend or run guided response playbooks. You stay in control: automated actions are scoped, reversible where possible, and fully logged, with human approval available for high-impact steps.",
+  },
+  {
+    q: "What size of organization do you work with?",
+    a: "From growing teams to large enterprises and MSSPs. Multi-tenancy, RBAC, and automated deployment mean the same platform scales from a single environment to many — without adding operational overhead.",
+  },
 ];
 
 /* ---------- Team (About page) ---------- */
@@ -197,35 +221,35 @@ export const team = [
     name: "Selam Bekele",
     role: "Founder & CEO",
     bio: "Sets the vision for accessible, enterprise-grade security across Africa and beyond.",
-    img: portrait("1573496359142-b8d87734a5a2"),
+    img: "/teams/seid.png",
     linkedin: "https://www.linkedin.com/company/betatechhub",
   },
   {
     name: "Daniel Tesfaye",
     role: "Chief Technology Officer",
     bio: "Architects the unified data fabric behind our SIEM, EDR, and IDS/IPS engines.",
-    img: portrait("1500648767791-00dcc994a43e"),
+    img: "/teams/girma.png",
     linkedin: "https://www.linkedin.com/company/betatechhub",
   },
   {
     name: "Hana Girma",
     role: "Head of Security Operations",
     bio: "Leads the 24/7 SOC — turning telemetry into fast, confident incident response.",
-    img: portrait("1438761681033-6461ffad8d80"),
+    img: "/teams/anteneh.png",
     linkedin: "https://www.linkedin.com/company/betatechhub",
   },
   {
     name: "Yonas Alemu",
     role: "Lead Security Engineer",
     bio: "Builds the ML detection pipelines that catch what signatures miss.",
-    img: portrait("1507003211169-0a1dd7228f2d"),
+    img: "/teams/selam.png",
     linkedin: "https://www.linkedin.com/company/betatechhub",
   },
   {
     name: "Marta Haile",
     role: "GRC Lead",
     bio: "Guides clients from discovery to ISO 27001 certification and continuous assurance.",
-    img: portrait("1487412720507-e7ab37603c6f"),
+    img: "/teams/micky.png",
     linkedin: "https://www.linkedin.com/company/betatechhub",
   },
 ];
@@ -263,6 +287,85 @@ export const contactSteps = [
   { n: "01", title: "Discovery call", text: "A 30-minute conversation to understand your environment and priorities." },
   { n: "02", title: "Tailored proposal", text: "We map the right mix of SIEM, EDR, IDS/IPS, and GRC to your needs." },
   { n: "03", title: "Onboarding", text: "Automated deployment gets you protected and visible within days." },
+];
+
+/* ---------- Threat coverage (Platform) ---------- */
+export const threats = [
+  { icon: "🔒", title: "Ransomware", text: "Detect and contain encryption attacks before they spread across your estate." },
+  { icon: "🎣", title: "Phishing & BEC", text: "Stop credential theft and business-email compromise at the identity layer." },
+  { icon: "🕵️", title: "Insider threats", text: "UEBA flags compromised accounts and malicious insiders by behavior, not rules." },
+  { icon: "💥", title: "Zero-day exploits", text: "ML and anomaly detection catch novel attacks that signatures have never seen." },
+  { icon: "🌊", title: "DDoS & network abuse", text: "Real-time traffic analysis isolates volumetric and protocol attacks fast." },
+  { icon: "🔗", title: "Supply-chain attacks", text: "Continuous monitoring of third-party and dependency risk across your software." },
+];
+
+/* ---------- Plans / pricing (Products) ---------- */
+export const plans = [
+  {
+    name: "Essential",
+    blurb: "Core protection for growing teams.",
+    price: "Custom",
+    featured: false,
+    cta: "Get a quote",
+    features: ["Next-Gen SIEM", "Advanced EDR", "24/7 alerting", "Email & chat support", "Monthly reporting"],
+  },
+  {
+    name: "Professional",
+    blurb: "Full-stack defense with managed response.",
+    price: "Custom",
+    featured: true,
+    cta: "Talk to sales",
+    features: ["Everything in Essential", "Advanced IDS/IPS", "Managed detection & response", "UEBA & threat hunting", "Dedicated analyst", "Quarterly reviews"],
+  },
+  {
+    name: "Enterprise",
+    blurb: "Multi-tenant scale for MSSPs and large orgs.",
+    price: "Custom",
+    featured: false,
+    cta: "Contact us",
+    features: ["Everything in Professional", "Multi-tenancy & RBAC", "GRC & compliance program", "Custom integrations", "SLA-backed response", "Named success team"],
+  },
+];
+
+/* ---------- Company milestones (About) ---------- */
+export const milestones = [
+  { year: "2023", title: "Founded in Addis Ababa", text: "Beta Tech Hub launches with a mission to make enterprise-grade security accessible." },
+  { year: "2024", title: "One unified platform", text: "SIEM, EDR, and IDS/IPS converge onto a single shared data fabric." },
+  { year: "2025", title: "Agentic AI", text: "AI-assisted triage and automated response roll out across the platform." },
+  { year: "2026", title: "Scaling across sectors", text: "Protecting organizations across finance, public, telecom, and critical infrastructure." },
+];
+
+/* ---------- Solutions (expanding panels) ---------- */
+export const solutions = [
+  { title: "Next-Gen SIEM", text: "Centralized detection and response across your whole estate.", img: img.siem1, to: "/products" },
+  { title: "Advanced EDR", text: "Deep endpoint visibility with automated containment.", img: img.edr1, to: "/products" },
+  { title: "Advanced IDS/IPS", text: "Real-time network threat detection and prevention.", img: img.ids1, to: "/products" },
+  { title: "GRC Services", text: "Turn compliance into a continuous, strategic advantage.", img: img.grcCompliance, to: "/grc" },
+];
+
+/* ---------- Coverage meters (animated bars) ---------- */
+export const coverage = [
+  { label: "Threat detection coverage", pct: 98 },
+  { label: "Automated response", pct: 92 },
+  { label: "Compliance readiness", pct: 95 },
+  { label: "Mean-time-to-detect reduction", pct: 88 },
+];
+
+/* ---------- Comparison (us vs. traditional) ---------- */
+export const comparison = [
+  { feature: "Unified SIEM, EDR & IDS/IPS", us: true, them: false },
+  { feature: "ML & behavioral detection", us: true, them: false },
+  { feature: "Automated, guided response", us: true, them: false },
+  { feature: "Multi-tenancy & RBAC for MSSPs", us: true, them: false },
+  { feature: "Built-in GRC & compliance program", us: true, them: false },
+  { feature: "Signature-based alerts", us: true, them: true },
+];
+
+/* ---------- Insights / resources (Home) ---------- */
+export const insights = [
+  { tag: "Threat Intel", title: "How AI is reshaping the modern SOC", read: "5 min read", img: img.siem2, to: "/platform" },
+  { tag: "Compliance", title: "A practical roadmap to ISO 27001", read: "7 min read", img: img.grcCompliance2, to: "/grc" },
+  { tag: "Best Practices", title: "Stopping ransomware before it spreads", read: "4 min read", img: img.edr2, to: "/products" },
 ];
 
 /* ---------- Navigation ---------- */

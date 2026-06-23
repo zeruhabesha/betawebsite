@@ -13,22 +13,23 @@ import usePointerSignal from "../hooks/usePointerSignal.js";
 import {
   stats,
   pillars,
-  products,
+  solutions,
   differentiators,
   integrations,
   testimonials,
   faqs,
   homeProcess,
   impact,
+  insights,
 } from "../data/site.js";
-import { video, img } from "../data/media.js";
+import { video, img, FALLBACK_GRADIENT } from "../data/media.js";
 
 export default function Home() {
   const heroVideoRef = useRef(null);
   const heroRef = useHeroParallax();
   const pillarsRef = usePointerSignal({ tilt: true });
-  const productsRef = usePointerSignal({ tilt: true });
   const testiRef = usePointerSignal({ tilt: true });
+  const insightsRef = usePointerSignal({ tilt: true });
 
   // Reveal the real footage only once it has actually loaded; until then the
   // animated cyber-defense canvas shows through (never a static image).
@@ -150,7 +151,7 @@ export default function Home() {
         <div className="container media-split media-split--reverse">
           <Reveal className="media-split__media">
             <div className="media-frame media-frame--tall">
-              <MediaImage src={img.aboutTeam} alt="Security analysts at work" />
+              <video className="media-img" src={img.aboutTeam2} autoPlay muted loop playsInline aria-label="Security analysts at work" />
               <span className="media-frame__badge">Your security partner</span>
             </div>
           </Reveal>
@@ -203,28 +204,30 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ---------- Products teaser ---------- */}
+      {/* ---------- Solutions — interactive expanding panels ---------- */}
       <section className="section">
         <div className="container">
           <Reveal className="section__head">
             <span className="tag">Product Catalog</span>
-            <h2 className="section__title">Three powerful <span className="grad">engines</span></h2>
-            <p className="section__sub">One unified platform — explore each solution in depth.</p>
+            <h2 className="section__title">Explore our <span className="grad">solutions</span></h2>
+            <p className="section__sub">Hover a panel to dive in — four ways we keep you secure.</p>
           </Reveal>
-          <div className="grc-grid" ref={productsRef}>
-            {products.map((p, i) => (
-              <Reveal key={p.id} className="grc-card" as="article" data-tilt style={{ "--i": i }}>
-                <Link to="/products" className="grc-card__media" aria-label={p.name}>
-                  <MediaImage src={p.image} alt={p.name} />
-                </Link>
-                <div className="grc-card__body">
-                  <h3>{p.name}</h3>
-                  <p>{p.tagline}</p>
-                  <Link to="/products" className="link-arrow">Learn more →</Link>
+          <Reveal className="panels">
+            {solutions.map((s) => (
+              <article
+                className="panel"
+                key={s.title}
+                style={{ backgroundImage: `url(${s.img}), ${FALLBACK_GRADIENT}` }}
+              >
+                <span className="panel__label">{s.title}</span>
+                <div className="panel__content">
+                  <h3>{s.title}</h3>
+                  <p>{s.text}</p>
+                  <Link to={s.to} className="link-arrow">Learn more →</Link>
                 </div>
-              </Reveal>
+              </article>
             ))}
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -283,6 +286,34 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ---------- Insights ---------- */}
+      <section className="section">
+        <div className="container">
+          <Reveal className="section__head">
+            <span className="tag">Insights</span>
+            <h2 className="section__title">From the <span className="grad">Beta Tech Hub blog</span></h2>
+            <p className="section__sub">Practical guidance on threats, detection, and compliance from our analysts.</p>
+          </Reveal>
+          <div className="grc-grid" ref={insightsRef}>
+            {insights.map((a, i) => (
+              <Reveal key={a.title} className="grc-card" as="article" data-tilt style={{ "--i": i }}>
+                <Link to={a.to} className="grc-card__media" aria-label={a.title}>
+                  <MediaImage src={a.img} alt="" />
+                  <span className="insight-tag">{a.tag}</span>
+                </Link>
+                <div className="grc-card__body">
+                  <h3>{a.title}</h3>
+                  <div className="insight-meta">
+                    <span>{a.read}</span>
+                    <Link to={a.to} className="link-arrow">Read →</Link>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ---------- FAQ ---------- */}
       <section className="section section--alt section--grid">
         <div className="container faq-layout">
@@ -308,7 +339,7 @@ export default function Home() {
       </section>
 
       {/* ---------- Process ---------- */}
-      <section className="section section--alt section--dots">
+      <section className="section section--dots">
         <div className="container">
           <Reveal className="section__head">
             <span className="tag">How It Works</span>

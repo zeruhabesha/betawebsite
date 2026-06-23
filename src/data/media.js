@@ -16,20 +16,37 @@ export const img = {
   heroPoster: u("1550751827-4bd374c3f58b", 1920, 1080), // glowing red padlock — cyber defense
   // About
   aboutTeam: "/media/2.jpg", // analyst at desk + shield (brand image) — was u("1573164713714-d95e436ab8d6")
-  aboutSoc: "/media/3.jpg", // shield on circuit board (brand image) — was u("1518770660439-4636190af475")
-  // Platform
+   aboutTeam2: "/media/1.mp4", // analyst at desk + shield (brand image) — was u("1573164713714-d95e436ab8d6")
+ aboutSoc: "/media/3.jpg", // shield on circuit board (brand image) — was u("1518770660439-4636190af475")
+ aboutSoc1: "/media/l.mp4", // shield on circuit board (brand image) — was u("1518770660439-4636190af475")
+
+ // Platform
   platformGrid: u("1451187580459-43490279c0fa", 1200, 800), // connected network globe
   platformData: u("1558494949-ef010cbdcc31", 1200, 800), // datacenter cabling
-  // Products
-  edr: "/media/1.jpg", // hooded defender + biometric hand (brand image) — was u("1614064548237-096f735f344f")
-  ids: "/media/4.gif", // animated network traffic (brand gif) — was u("1526374965328-7f61d4dc18c5")
-  siem: u("1551288049-bebda4e38f71", 1000, 700), // dashboards / analytics
+  // Products (animated brand gifs)
+  edr: "/media/edr.gif", // animated endpoint defense
+  ids: "/media/ids.gif", // animated network traffic
+  siem: "/media/siem.gif", // animated SOC dashboards
+  edr1: "/media/e.jpg", // animated endpoint defense
+  ids1: "/media/h.jpg", // animated network traffic
+  siem1: "/media/f.jpg", // animated SOC dashboards
+
+    seid: "/teams/seid.png", // animated endpoint defense
+  selam: "/teams/selam.png", // animated network traffic
+  micky: "/teams/micky.png", // animated SOC dashboards
+  anteneh: "/teams/anteneh.png", // animated endpoint defense
+  girma: "/teams/girma.png", // animated network traffic
+
+    edr2: "/media/i.jpg", // animated endpoint defense
+  grcCompliance2: "/media/b.jpg", // animated network traffic
+  siem2: "/media/a.jpg", // animated SOC dashboards
   // GRC
   grcGovernance: u("1454165804606-c3d57bc86b40", 1000, 700), // planning / charts
   grcRisk: u("1504384308090-c894fdcc538d", 1000, 700), // boardroom / meeting
   grcCompliance: u("1450101499163-c8848c66ca85", 1000, 700), // documents / audit
   // Contact / generic
   contact: u("1521737604893-d14cc237f11d", 1100, 760), // team collaboration
+    contact1: "/media/k.jpg", // animated network traffic
   cta: u("1510915228340-29c85a43dcfe", 1600, 900), // server / dark tech
 };
 

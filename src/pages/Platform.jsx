@@ -6,12 +6,13 @@ import MediaVideo from "../components/MediaVideo.jsx";
 import Magnetic from "../components/Magnetic.jsx";
 import usePointerSignal from "../hooks/usePointerSignal.js";
 import useCountUp from "../hooks/useCountUp.js";
-import { platformFeatures, deployments } from "../data/site.js";
+import { platformFeatures, deployments, threats, coverage } from "../data/site.js";
 import { img, video } from "../data/media.js";
 
 export default function Platform() {
   const featuresRef = usePointerSignal({ tilt: true });
   const deployRef = usePointerSignal({ tilt: true });
+  const threatRef = usePointerSignal({ tilt: true });
   const [engineCountRef, engineCount] = useCountUp(3);
   return (
     <>
@@ -74,7 +75,7 @@ export default function Platform() {
       </section>
 
       {/* Capabilities bento */}
-      <section className="section section--alt section--dots">
+      <section className="section section--dots">
         <div className="container">
           <Reveal className="section__head">
             <span className="tag">Capabilities</span>
@@ -115,6 +116,50 @@ export default function Platform() {
         </div>
       </section>
 
+      {/* What we defend against */}
+      <section className="section section--glow">
+        <div className="container">
+          <Reveal className="section__head">
+            <span className="tag">Threat Coverage</span>
+            <h2 className="section__title">What we <span className="grad">defend against</span></h2>
+            <p className="section__sub">From commodity malware to targeted, novel attacks — one platform covers the full threat landscape.</p>
+          </Reveal>
+          <div className="grc-grid" ref={threatRef}>
+            {threats.map((t, i) => (
+              <Reveal key={t.title} className="mini-card" data-tilt style={{ "--i": i }}>
+                <div className="mini-card__icon" aria-hidden="true">{t.icon}</div>
+                <h3>{t.title}</h3>
+                <p>{t.text}</p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Coverage meters */}
+      <section className="section section--alt section--grid">
+        <div className="container">
+          <Reveal className="section__head">
+            <span className="tag">Coverage</span>
+            <h2 className="section__title">Measurable <span className="grad">protection</span></h2>
+            <p className="section__sub">Outcomes our customers see across detection, response, and compliance.</p>
+          </Reveal>
+          <Reveal className="meters">
+            {coverage.map((c) => (
+              <div className="meter" key={c.label}>
+                <div className="meter__top">
+                  <span>{c.label}</span>
+                  <span className="meter__pct">{c.pct}%</span>
+                </div>
+                <div className="meter__track">
+                  <span className="meter__fill" style={{ "--pct": `${c.pct}%` }} />
+                </div>
+              </div>
+            ))}
+          </Reveal>
+        </div>
+      </section>
+
       {/* Deployment options */}
       <section className="section">
         <div className="container">
@@ -136,13 +181,13 @@ export default function Platform() {
       </section>
 
       {/* Imagery strip */}
-      <section className="section section--alt section--grid">
+      <section className="section section--grid">
         <div className="container">
           <Reveal className="section__head">
             <span className="tag">Built for Scale</span>
             <h2 className="section__title">Infrastructure-grade <span className="grad">protection</span></h2>
           </Reveal>
-          <div className="about__media" style={{ gridTemplateColumns: "1fr 1fr 1fr" }}>
+          <Reveal className="about__media">
             <div className="media-frame">
               <MediaImage src={img.platformData} alt="Data center cabling" />
               <span className="media-frame__badge">Datacenter</span>
@@ -155,7 +200,7 @@ export default function Platform() {
               <MediaImage src={img.edr} alt="Endpoint security" />
               <span className="media-frame__badge">Endpoints</span>
             </div>
-          </div>
+          </Reveal>
           <div style={{ textAlign: "center", marginTop: 44 }}>
             <Magnetic>
               <Link to="/products" className="btn btn--primary">Explore the engines</Link>
