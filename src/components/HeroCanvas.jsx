@@ -43,8 +43,10 @@ export default function HeroCanvas() {
       canvas.width = W * DPR;
       canvas.height = H * DPR;
       ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-      cx = W * 0.5;
-      cy = H * 0.5;
+      // On desktop the headline sits on the left, so anchor the shield in the
+      // empty right-hand space; keep it centred on narrow / mobile viewports.
+      cx = W >= 1024 ? W * 0.74 : W >= 700 ? W * 0.66 : W * 0.5;
+      cy = H * 0.48;
       buildNodes();
     };
 

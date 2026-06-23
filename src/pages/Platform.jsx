@@ -14,6 +14,9 @@ export default function Platform() {
   const deployRef = usePointerSignal({ tilt: true });
   const threatRef = usePointerSignal({ tilt: true });
   const [engineCountRef, engineCount] = useCountUp(3);
+  const photoBg = (file) => ({
+    backgroundImage: `linear-gradient(165deg, rgba(6,10,22,.5), rgba(6,10,22,.86)), url(/media/${file})`,
+  });
   return (
     <>
       <PageHeader
@@ -29,11 +32,19 @@ export default function Platform() {
           <Reveal className="platform__diagram" aria-hidden="true">
             <div className="orbit">
               <div className="core">Unified<br />Platform</div>
-              <div className="node node--1">SIEM</div>
-              <div className="node node--2">IDS/IPS</div>
-              <div className="node node--3">EDR</div>
               <span className="ring ring--1" />
               <span className="ring ring--2" />
+              <span className="ring ring--3" />
+              
+              <div className="node-container node-container--1">
+                <div className="node">SIEM</div>
+              </div>
+              <div className="node-container node-container--2">
+                <div className="node">IDS/IPS</div>
+              </div>
+              <div className="node-container node-container--3">
+                <div className="node">EDR</div>
+              </div>
             </div>
           </Reveal>
           <div className="platform__features" ref={featuresRef}>
@@ -83,22 +94,22 @@ export default function Platform() {
             <p className="section__sub">A single platform that sees, understands, and acts across your entire estate.</p>
           </Reveal>
           <Reveal className="bento">
-            <div className="bento__tile bento__tile--xl bento__tile--accent">
+            <div className="bento__tile bento__tile--xl bento__tile--photo" style={photoBg("p.jpg")}>
               <div className="bento__icon" aria-hidden="true">🛡️</div>
               <h3>One platform, total coverage</h3>
               <p>SIEM, EDR, and IDS/IPS on a single data fabric — detect, investigate, and respond without ever switching tools or losing context.</p>
             </div>
-            <div className="bento__tile">
+            <div className="bento__tile bento__tile--photo" style={photoBg("zz.jpg")}>
               <div className="bento__num" ref={engineCountRef}>{engineCount}</div>
               <h3>Integrated engines</h3>
               <p>SIEM · EDR · IDS/IPS</p>
             </div>
-            <div className="bento__tile">
+            <div className="bento__tile bento__tile--photo" style={photoBg("z.jpg")}>
               <div className="bento__icon" aria-hidden="true">⚡</div>
               <h3>Real-time</h3>
               <p>Instant detection &amp; automated response.</p>
             </div>
-            <div className="bento__tile bento__tile--wide">
+            <div className="bento__tile bento__tile--wide bento__tile--photo" style={photoBg("w.jpg")}>
               <div className="bento__icon" aria-hidden="true">🤖</div>
               <h3>ML-based detection</h3>
               <p>Behavioral analytics surface both known exploits and zero-day anomalies that signatures miss.</p>
@@ -107,7 +118,7 @@ export default function Platform() {
               <MediaImage src={img.platformData} alt="Datacenter infrastructure" />
               <span className="bento__caption">Infrastructure-grade telemetry</span>
             </div>
-            <div className="bento__tile bento__tile--wide">
+            <div className="bento__tile bento__tile--wide bento__tile--photo" style={photoBg("pp.jpg")}>
               <div className="bento__icon" aria-hidden="true">🌐</div>
               <h3>Built for scale</h3>
               <p>Multi-tenancy, RBAC, and automated deployment across on-prem, cloud, and hybrid.</p>
@@ -193,11 +204,11 @@ export default function Platform() {
               <span className="media-frame__badge">Datacenter</span>
             </div>
             <div className="media-frame">
-              <MediaImage src={img.platformGrid} alt="Connected global network" />
+              <MediaImage src={img.platformGrid3} alt="Connected global network" />
               <span className="media-frame__badge">Global network</span>
             </div>
             <div className="media-frame">
-              <MediaImage src={img.edr} alt="Endpoint security" />
+              <MediaImage src={img.edr4} alt="Endpoint security" />
               <span className="media-frame__badge">Endpoints</span>
             </div>
           </Reveal>

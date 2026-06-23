@@ -5,12 +5,13 @@ import MediaImage from "../components/MediaImage.jsx";
 import MediaVideo from "../components/MediaVideo.jsx";
 import Magnetic from "../components/Magnetic.jsx";
 import usePointerSignal from "../hooks/usePointerSignal.js";
-import { pillars, company, team, values, milestones } from "../data/site.js";
+import { pillars, company, team, advisers, values, milestones } from "../data/site.js";
 import { img, video } from "../data/media.js";
 
 export default function About() {
   const cardsRef = usePointerSignal({ tilt: true });
   const teamRef = usePointerSignal({ tilt: true });
+  const advisersRef = usePointerSignal({ tilt: true });
   const valuesRef = usePointerSignal({ tilt: true });
   return (
     <>
@@ -111,10 +112,10 @@ export default function About() {
             <span className="tag">What Drives Us</span>
             <h2 className="section__title">The defense <span className="grad">lifecycle</span></h2>
           </Reveal>
-          <div className="about__cards" style={{ marginTop: 0 }} ref={cardsRef}>
+          <div className="lifecycle-flow" style={{ marginTop: 60 }} ref={cardsRef}>
             {pillars.map((p, i) => (
-              <Reveal key={p.title} className="mini-card" data-tilt style={{ "--i": i }}>
-                <div className="mini-card__icon">{p.icon}</div>
+              <Reveal key={p.title} className="lifecycle-step" style={{ "--i": i }}>
+                <div className="lifecycle-step__icon">{p.icon}</div>
                 <h3>{p.title}</h3>
                 <p>{p.text}</p>
               </Reveal>
@@ -178,6 +179,43 @@ export default function About() {
                     </svg>
                     LinkedIn
                   </a>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Global Advisers */}
+      <section className="section section--alt section--glow">
+        <div className="container">
+          <Reveal className="section__head">
+            <span className="tag">Advisory Board</span>
+            <h2 className="section__title">Global <span className="grad">Advisers</span></h2>
+            <p className="section__sub">Industry veterans guiding our strategy and international operations.</p>
+          </Reveal>
+          <div className="team-grid" ref={advisersRef}>
+            {advisers.map((m, i) => (
+              <Reveal key={m.name} className="team-card" as="article" data-tilt style={{ "--i": i }}>
+                <div className="team-card__photo">
+                  <MediaImage src={m.img} alt={m.name} className="team-card__img" />
+                </div>
+                <div className="team-card__body">
+                  <span className="team-card__name">{m.name}</span>
+                  <span className="team-card__role">{m.role}</span>
+                  <p className="team-card__bio">{m.bio}</p>
+                  {/* <a
+                    className="team-card__social"
+                    href={m.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${m.name} on LinkedIn`}
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.85V21h-4z" />
+                    </svg>
+                    LinkedIn
+                  </a> */}
                 </div>
               </Reveal>
             ))}

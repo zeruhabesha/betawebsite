@@ -147,6 +147,16 @@ export const integrations = [
   { name: "Docker", logo: "/logos/docker.svg" },
 ];
 
+/* ---------- Partners ---------- */
+export const partners = [
+  { name: "", logo: "/logos/sky.jpg" },
+  { name: "", logo: "/logos/TBN.png" },
+  { name: "", logo: "/logos/asian.png" },
+  { name: "", logo: "/logos/halges.png" },
+  { name: "", logo: "/logos/IW.png" },
+  { name: "", logo: "/logos/legacy.png" },
+];
+
 /* ---------- Testimonials ---------- */
 export const testimonials = [
   {
@@ -199,18 +209,7 @@ export const faqs = [
     q: "How is the platform priced?",
     a: "Pricing is tailored to your environment, data volume, and the engines you need. We start with a short discovery call and map the right mix of SIEM, EDR, IDS/IPS, and GRC — there are no public per-seat tiers because security needs vary widely.",
   },
-  {
-    q: "Where is my data stored, and who can access it?",
-    a: "You choose the footprint — on-premise, cloud, or hybrid — so sensitive data can stay inside your perimeter. Access is governed by role-based controls and full audit logging, so every action is attributable.",
-  },
-  {
-    q: "How does the AI handle threats — and is it safe to let it act?",
-    a: "Our ML models surface anomalies and prioritize what matters, and agentic AI can recommend or run guided response playbooks. You stay in control: automated actions are scoped, reversible where possible, and fully logged, with human approval available for high-impact steps.",
-  },
-  {
-    q: "What size of organization do you work with?",
-    a: "From growing teams to large enterprises and MSSPs. Multi-tenancy, RBAC, and automated deployment mean the same platform scales from a single environment to many — without adding operational overhead.",
-  },
+
 ];
 
 /* ---------- Team (About page) ---------- */
@@ -218,39 +217,63 @@ const portrait = (id) =>
   `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=640&h=800&q=80`;
 export const team = [
   {
-    name: "Selam Bekele",
-    role: "Founder & CEO",
-    bio: "Sets the vision for accessible, enterprise-grade security across Africa and beyond.",
+    name: "Seid Oumer",
+    role: "Founder",
+    bio: "Seid Umer is the founder of beta tech hub, known for his innovative leadership. He built the company from the ground up, making it a leader in the market",
     img: "/teams/seid.png",
     linkedin: "https://www.linkedin.com/company/betatechhub",
   },
   {
-    name: "Daniel Tesfaye",
-    role: "Chief Technology Officer",
-    bio: "Architects the unified data fabric behind our SIEM, EDR, and IDS/IPS engines.",
+    name: "Girma Moges",
+    role: "Co-Founder",
+    bio: "Girma Moges, Co-founder of BETA TECH HUB, is recognized for his visionary leadership. He established the company from scratch, transforming it into a prominent player in the industry",
     img: "/teams/girma.png",
     linkedin: "https://www.linkedin.com/company/betatechhub",
   },
   {
-    name: "Hana Girma",
-    role: "Head of Security Operations",
-    bio: "Leads the 24/7 SOC — turning telemetry into fast, confident incident response.",
+    name: "Anteneh Wondafrash",
+    role: "Co-Founder",
+    bio: "Anteneh Wondafrash, Co-founder of BETA TECH HUB, is celebrated for his forward-thinking leadership. He developed the company from its inception, establishing it as a key leader in the industry",
     img: "/teams/anteneh.png",
     linkedin: "https://www.linkedin.com/company/betatechhub",
   },
   {
-    name: "Yonas Alemu",
-    role: "Lead Security Engineer",
-    bio: "Builds the ML detection pipelines that catch what signatures miss.",
+    name: "Selamawit Zemene",
+    role: "president",
+    bio: "Selamawit Zemene leads our tech innovations, bringing over 15 years of experience in AI, IoT, and blockchain to drive forward-thinking solutions.",
     img: "/teams/selam.png",
     linkedin: "https://www.linkedin.com/company/betatechhub",
   },
   {
-    name: "Marta Haile",
-    role: "GRC Lead",
-    bio: "Guides clients from discovery to ISO 27001 certification and continuous assurance.",
+    name: "Michael Yimer",
+    role: "CTO",
+    bio: "Michael ensures robust security for our clients, leveraging his decade-long expertise in cybersecurity to protect against evolving threats and vulnerabilities",
     img: "/teams/micky.png",
     linkedin: "https://www.linkedin.com/company/betatechhub",
+  },
+];
+
+export const advisers = [
+  {
+    name: "Akash Bhavsar",
+    role: "Global Adviser",
+    // bio: "Former CISO with 20+ years guiding international cybersecurity strategy and compliance.",
+    img: "/teams/akash.png",
+    // linkedin: "https://www.linkedin.com/",
+  },
+  {
+    name: "Jean Maurice",
+    role: "Global Adviser",
+    // bio: "Expert in cross-border data privacy and risk management frameworks.",
+    img: "/teams/jean.png",
+    // linkedin: "https://www.linkedin.com/",
+  },
+  {
+    name: "Nelson Korish",
+    role: "Global Adviser",
+    // bio: "Specialist in cyber-threat intelligence and AI-driven defense mechanisms.",
+    img: "/teams/nilson.png",
+    // linkedin: "https://www.linkedin.com/",
   },
 ];
 

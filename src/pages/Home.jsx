@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Reveal from "../components/Reveal.jsx";
 import Stat from "../components/Stat.jsx";
@@ -15,51 +15,66 @@ import {
   pillars,
   solutions,
   differentiators,
-  integrations,
-  testimonials,
-  faqs,
   homeProcess,
   impact,
   insights,
+  integrations,
+  partners,
+  testimonials,
+  faqs,
 } from "../data/site.js";
 import { video, img, FALLBACK_GRADIENT } from "../data/media.js";
 
 export default function Home() {
-  const heroVideoRef = useRef(null);
+  const partnerSliderRef = useRef(null);
+  const reqRef = useRef(null);
+  const isInteracting = useRef(false);
+
+  const autoScroll = () => {
+    if (partnerSliderRef.current && !isInteracting.current) {
+      const el = partnerSliderRef.current;
+      el.scrollLeft += 0.5; // very slow, smooth scroll
+      
+      // Seamless loop: if we scroll past the first half, jump back to 0
+      // Because we cloned the list, scrollWidth / 2 is exactly the original list's width.
+      if (el.scrollLeft >= el.scrollWidth / 2) {
+        el.scrollLeft -= el.scrollWidth / 2;
+      }
+    }
+    reqRef.current = requestAnimationFrame(autoScroll);
+  };
+
+  useEffect(() => {
+    reqRef.current = requestAnimationFrame(autoScroll);
+    return () => cancelAnimationFrame(reqRef.current);
+  }, []);
+
+  const scrollPartners = (dir) => {
+    if (partnerSliderRef.current) {
+      isInteracting.current = true;
+      const el = partnerSliderRef.current;
+      el.scrollBy({ left: dir * 300, behavior: "smooth" });
+      
+      // Resume auto-scroll after the smooth jump finishes
+      setTimeout(() => {
+        isInteracting.current = false;
+      }, 600);
+    }
+  };
+
   const heroRef = useHeroParallax();
   const pillarsRef = usePointerSignal({ tilt: true });
   const testiRef = usePointerSignal({ tilt: true });
   const insightsRef = usePointerSignal({ tilt: true });
 
-  // Reveal the real footage only once it has actually loaded; until then the
-  // animated cyber-defense canvas shows through (never a static image).
-  const onHeroReady = () => {
-    const el = heroVideoRef.current;
-    if (el && el.readyState >= 2 && el.videoWidth > 0) el.classList.add("is-ready");
-  };
-
   return (
     <>
-      {/* ---------- HERO with cyber-defense video ---------- */}
+      {/* ---------- HERO with live cyber-defense animation ---------- */}
       <section className="hero" ref={heroRef}>
         <div className="hero__media">
-          {/* Animated "defender repelling attacks" base layer (always on). */}
+          {/* Animated cyber-defense scene: a glowing shield repels incoming
+              attack particles across a live network grid. */}
           <HeroCanvas />
-          {/* Real footage fades in over the canvas as soon as it can play. */}
-          <video
-            ref={heroVideoRef}
-            className="hero__video"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            onLoadedData={onHeroReady}
-          >
-            {video.hero.srcs.map((s) => (
-              <source key={s} src={s} type="video/mp4" />
-            ))}
-          </video>
           <div className="hero__overlay" />
         </div>
 
@@ -74,8 +89,7 @@ export default function Home() {
             <DecodeText text="in the Digital Era" />
           </h1>
           <p className="hero__lead">
-            Advanced security, proactive compliance, and resilient operations —
-            powered by AI. Beta Tech Hub defends your digital infrastructure
+            Advanced security, proactive compliance, and resilient operations. Beta Tech Hub defends your digital infrastructure
             against threats before they strike.
           </p>
           <div className="hero__actions">
@@ -145,6 +159,7 @@ export default function Home() {
           </Reveal>
         </div>
       </section>
+
 
       {/* ---------- Why choose us ---------- */}
       <section className="section">
@@ -296,21 +311,53 @@ export default function Home() {
           </Reveal>
           <div className="grc-grid" ref={insightsRef}>
             {insights.map((a, i) => (
-              <Reveal key={a.title} className="grc-card" as="article" data-tilt style={{ "--i": i }}>
-                <Link to={a.to} className="grc-card__media" aria-label={a.title}>
-                  <MediaImage src={a.img} alt="" />
-                  <span className="insight-tag">{a.tag}</span>
-                </Link>
-                <div className="grc-card__body">
+              <Reveal key={a.title} className="insight-cover" as={Link} to={a.to} data-tilt style={{ "--i": i }}>
+                <img src={a.img} alt="" className="insight-cover__bg" />
+                <span className="insight-tag">{a.tag}</span>
+                <div className="insight-cover__content">
                   <h3>{a.title}</h3>
                   <div className="insight-meta">
                     <span>{a.read}</span>
-                    <Link to={a.to} className="link-arrow">Read →</Link>
+                    <span className="link-arrow">Read →</span>
                   </div>
                 </div>
               </Reveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ---------- Partners strip ---------- */}
+      <section className="section section--alt" style={{ paddingBottom: 56 }}>
+        <div className="container">
+          <Reveal className="logos">
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "22px" }}>
+              <span className="logos__label" style={{ marginBottom: 0 }}>Our Trusted Partners</span>
+              <div className="slider-controls">
+                <button className="slider-btn" onClick={() => scrollPartners(-1)} aria-label="Previous partners">
+                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <button className="slider-btn" onClick={() => scrollPartners(1)} aria-label="Next partners">
+                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+              </div>
+            </div>
+            
+            <div className="partner-slider">
+              <div className="partner-slider__track" ref={partnerSliderRef}>
+                {/* Render the array 4 times to ensure enough content for seamless looping */}
+                {[...Array(4)].map((_, i) => (
+                  <React.Fragment key={i}>
+                    {partners.map(({ logo }, index) => (
+                      <span className="partner-logo" key={`${i}-${index}`}>
+                        <img className="partner-logo__icon" src={logo} alt="" loading="lazy" />
+                      </span>
+                    ))}
+                  </React.Fragment>
+                ))}
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -346,10 +393,10 @@ export default function Home() {
             <h2 className="section__title">From first scan to <span className="grad">continuous defense</span></h2>
             <p className="section__sub">A clear path to protection — most environments are live within days.</p>
           </Reveal>
-          <div className="process-grid">
+          <div className="lifecycle-flow" style={{ marginTop: 60 }}>
             {homeProcess.map((s, i) => (
-              <Reveal key={s.n} className="process-step card-grad" style={{ "--i": i }}>
-                <span className="process-step__n">{s.n}</span>
+              <Reveal key={s.n} className="lifecycle-step" style={{ "--i": i }}>
+                <div className="lifecycle-step__icon">{s.n}</div>
                 <h3>{s.title}</h3>
                 <p>{s.text}</p>
               </Reveal>
