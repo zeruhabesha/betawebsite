@@ -21,6 +21,7 @@ export const img = {
  aboutSoc1: "/media/l.mp4", // shield on circuit board (brand image) — was u("1518770660439-4636190af475")
 
  // Platform
+   platformGrid:  "/media/c.jpg",
   platformGrid22:  "/media/1.mp4",
   platformGrid3: "/media/j.jpg",
  platformData: u("1558494949-ef010cbdcc31", 1200, 800), // datacenter cabling
