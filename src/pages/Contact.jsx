@@ -4,21 +4,36 @@ import Reveal from "../components/Reveal.jsx";
 import usePointerSignal from "../hooks/usePointerSignal.js";
 import { company, contactSteps } from "../data/site.js";
 import { img } from "../data/media.js";
+import { isEmailConfigured, sendWebsiteEmail } from "../lib/email.js";
 
 export default function Contact() {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState("idle");
   const formAreaRef = usePointerSignal({ selector: ".spot" });
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     const form = e.currentTarget;
     if (!form.checkValidity()) {
       form.reportValidity();
       return;
     }
-    setSent(true);
-    form.reset();
-    setTimeout(() => setSent(false), 5000);
+
+    const formData = new FormData(form);
+    setStatus("sending");
+
+    try {
+      await sendWebsiteEmail("Contact request", {
+        from_name: formData.get("name"),
+        from_email: formData.get("email"),
+        interest: formData.get("interest"),
+        message: formData.get("message") || "No message provided.",
+      });
+      setStatus("sent");
+      form.reset();
+      setTimeout(() => setStatus("idle"), 5000);
+    } catch (error) {
+      setStatus(isEmailConfigured() ? "error" : "config-error");
+    }
   };
 
   return (
@@ -63,7 +78,11 @@ export default function Contact() {
                 <option>Advanced EDR</option>
                 <option>Advanced IDS/IPS</option>
                 <option>Next-Gen SIEM</option>
+                <option>Cybersecurity Consultancy</option>
+                <option>Penetration Testing</option>
+                <option>Security Training</option>
                 <option>GRC Services</option>
+                <option>Managed Detection & Response</option>
               </select>
             </div>
             <div className="field">

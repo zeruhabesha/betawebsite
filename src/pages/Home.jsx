@@ -16,7 +16,6 @@ import {
   solutions,
   differentiators,
   homeProcess,
-  impact,
   insights,
   integrations,
   partners,
@@ -262,20 +261,7 @@ export default function Home() {
               Behavioral analytics and threat intelligence detect both known
               exploits and zero-day anomalies — so you respond before damage is done.
             </p>
-            <Link to="/grc" className="btn btn--ghost">Explore GRC services</Link>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ---------- Impact metrics band ---------- */}
-      <section className="section">
-        <div className="container">
-          <Reveal className="metric-band">
-            <div className="metric-band__grid">
-              {impact.map((s) => (
-                <Stat key={s.label} {...s} />
-              ))}
-            </div>
+            <Link to="/grc" className="btn btn--ghost">Explore services</Link>
           </Reveal>
         </div>
       </section>

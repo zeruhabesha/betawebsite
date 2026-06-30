@@ -9,13 +9,13 @@ import { company } from "./site.js";
 
 export const greeting = {
   text:
-    "👋 Hi, I'm Beta — the Beta Tech Hub assistant. Ask me about our platform, products, GRC services, pricing, or how to get started.",
+    "👋 Hi, I'm Beta — the Beta Tech Hub assistant. Ask me about our platform, products, services, GRC, pricing, or how to get started.",
   chips: ["What do you offer?", "Pricing", "GRC & compliance", "Talk to an expert"],
 };
 
 export const fallback = {
   text:
-    "I didn't quite catch that. I can help with our products (SIEM, EDR, IDS/IPS), the platform, GRC & compliance, pricing, deployment, and getting in touch — or I can connect you with our team.",
+    "I didn't quite catch that. I can help with our products (SIEM, EDR, IDS/IPS), the platform, services, GRC & compliance, pricing, deployment, and getting in touch — or I can connect you with our team.",
   chips: ["What do you offer?", "Pricing", "Talk to an expert"],
 };
 
@@ -31,8 +31,8 @@ export const intents = [
     keywords: ["product", "products", "engine", "engines", "solution", "solutions", "offer", "offering", "catalog", "what do you do", "services"],
     answer:
       "We run three engines on one unified platform: Next-Gen SIEM (centralized detection & response), Advanced EDR (endpoint protection), and Advanced IDS/IPS (network threat detection) — all sharing a single data fabric.",
-    link: { to: "/products", label: "Explore products" },
-    chips: ["Tell me about SIEM", "Pricing", "How does it work?"],
+    link: { to: "/grc", label: "Explore services" },
+    chips: ["Penetration testing", "Training", "Pricing"],
   },
   {
     id: "siem",
@@ -71,7 +71,7 @@ export const intents = [
     keywords: ["grc", "compliance", "governance", "risk", "iso", "iso 27001", "audit", "regulation", "regulatory", "framework", "frameworks", "soc 2", "gdpr", "hipaa", "pci", "what is grc", "grc mean", "grc stand"],
     answer:
       "GRC stands for Governance, Risk & Compliance — the discipline of aligning security with business goals (governance), identifying and managing what could go wrong (risk), and meeting legal & industry obligations like ISO 27001, SOC 2, NIST, GDPR, PCI DSS, and HIPAA (compliance). We run it as a structured, continuously-assured program — not a one-off audit — so it becomes a competitive advantage.",
-    link: { to: "/grc", label: "Explore GRC services" },
+    link: { to: "/grc", label: "Explore services" },
     chips: ["What is ISO 27001?", "Pricing", "Talk to an expert"],
   },
   {
@@ -133,7 +133,7 @@ export const intents = [
     keywords: ["iso 27001", "27001", "what is iso", "iso mean", "iso certification", "isms"],
     answer:
       "ISO 27001 is the international standard for an Information Security Management System (ISMS) — a documented, risk-based framework of policies and controls for protecting information. Certification proves to customers and regulators that security is managed systematically. Our GRC program guides you from gap assessment to certification and continuous assurance.",
-    link: { to: "/grc", label: "Explore GRC services" },
+    link: { to: "/grc", label: "Explore services" },
     chips: ["What is GRC?", "What frameworks?", "Talk to an expert"],
   },
   {
@@ -173,7 +173,7 @@ export const intents = [
     keywords: ["vulnerability", "vulnerabilities", "cve", "patch", "patching", "exposure", "weakness", "exploit"],
     answer:
       "A vulnerability is a weakness — a misconfiguration, unpatched flaw, or exposure — that an attacker can exploit. Our platform surfaces risky activity around those weaknesses and provides patch/update visibility, while our GRC program helps you prioritize and remediate the ones that matter most to your risk.",
-    link: { to: "/grc", label: "Explore GRC services" },
+    link: { to: "/grc", label: "Explore services" },
     chips: ["What is a data breach?", "Pricing", "Talk to an expert"],
   },
   {

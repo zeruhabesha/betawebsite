@@ -8,7 +8,7 @@ import usePointerSignal from "../hooks/usePointerSignal.js";
 import { grcServices, grcSteps, sectors, frameworks } from "../data/site.js";
 import { img, video } from "../data/media.js";
 
-/* A themed image per GRC card. */
+/* A themed image per service card. */
 const cardImages = [
   img.grcGovernance,
   img.grcRisk,
@@ -24,8 +24,8 @@ export default function GRC() {
     <>
       <PageHeader
         tag="Services Catalog"
-        title="Governance, Risk & Compliance"
-        sub="We transform compliance from a burdensome task into a strategic competitive advantage."
+        title="Security services for resilient organizations"
+        sub="Consulting, penetration testing, training, GRC, and managed security support delivered by one local expert team."
         image={img.grcCompliance}
       />
 
@@ -34,17 +34,15 @@ export default function GRC() {
         <div className="container media-split media-split--reverse">
           <Reveal className="media-split__media">
             <MediaVideo src={video.soc.src} poster={img.grcRisk}>
-              <h3>Governance that aligns with the business</h3>
-              <p>Security posture mapped to your objectives.</p>
+              <h3>Services aligned to your risk</h3>
+              <p>Consulting, testing, training, and compliance in one roadmap.</p>
             </MediaVideo>
           </Reveal>
           <Reveal className="media-split__text">
-            <span className="tag">Why GRC</span>
-            <h2 className="section__title">Turn regulation into <span className="grad">advantage</span></h2>
+            <span className="tag">Why Services</span>
+            <h2 className="section__title">Move from cyber risk to <span className="grad">measurable resilience</span></h2>
             <p className="lead">
-              We embed strong governance that aligns your security posture with
-              your business objectives — meeting regulatory and industry
-              requirements through structured, continuously-adhered programs.
+              We help organizations assess risk, validate defenses, train teams, meet compliance needs, and operate stronger security programs over time.
             </p>
           </Reveal>
         </div>
@@ -55,7 +53,7 @@ export default function GRC() {
         <div className="container">
           <Reveal className="section__head">
             <span className="tag">Our Services</span>
-            <h2 className="section__title">End-to-end <span className="grad">GRC</span></h2>
+            <h2 className="section__title">End-to-end <span className="grad">security services</span></h2>
           </Reveal>
           <div className="grc-grid" ref={cardsRef}>
             {grcServices.map((s, i) => (
@@ -114,9 +112,9 @@ export default function GRC() {
       <section className="section section--alt section--glow">
         <div className="container" style={{ textAlign: "center" }}>
           <Reveal>
-            <h2 className="section__title">Ready to mature your <span className="grad">security program?</span></h2>
+            <h2 className="section__title">Ready to strengthen your <span className="grad">security program?</span></h2>
             <p className="lead" style={{ maxWidth: 560, margin: "16px auto 26px" }}>
-              Let's build a roadmap from discovery to continuous assurance.
+              Let's build the right service roadmap for your risk, compliance, and operational goals.
             </p>
             <Magnetic>
               <Link to="/contact" className="btn btn--primary">Start the conversation</Link>

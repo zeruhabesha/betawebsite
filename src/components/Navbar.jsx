@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { navLinks, company } from "../data/site.js";
 import ThemeToggle from "./ThemeToggle.jsx";
+import LanguageSelector from "./LanguageSelector.jsx";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -39,6 +40,7 @@ export default function Navbar() {
         </nav>
 
         <div className="nav__right">
+          <LanguageSelector />
           <ThemeToggle />
           <button
             className={`nav__toggle ${open ? "is-open" : ""}`}

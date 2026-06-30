@@ -28,13 +28,6 @@ export const stats = [
   { num: 100, suffix: "%", label: "Centralized Visibility" },
 ];
 
-/* ---------- Impact metrics (Home band) ---------- */
-export const impact = [
-  { num: 12, suffix: "M+", label: "Security events analyzed daily" },
-  { num: 15, suffix: " min", label: "Median time to detect" },
-  { num: 40, suffix: "%", label: "Faster incident response" },
-  { num: 50, suffix: "+", label: "Organizations protected" },
-];
 
 /* ---------- About: detect / investigate / respond / comply ---------- */
 export const pillars = [
@@ -107,14 +100,32 @@ export const products = [
   },
 ];
 
-/* ---------- GRC ---------- */
+/* ---------- Services ---------- */
 export const grcServices = [
-  { title: "Governance Services", text: "Establish foundational cybersecurity and information governance structures aligned with leadership vision." },
-  { title: "Risk Management", text: "Identify, assess, and manage cybersecurity risks that impact operations and information assets." },
-  { title: "Compliance & Assurance", text: "Meet regulatory and industry requirements with structured, continuously-adhered programs." },
-  { title: "Integrated GRC Platform", text: "Consolidate governance, risk, and compliance into a single technological ecosystem." },
-  { title: "Training & Capacity", text: "Up-skill internal teams — from CISO leadership to ISO 27001 implementation." },
-  { title: "Continuous Assurance", text: "Ongoing monitoring that sustains cybersecurity maturity over time." },
+  {
+    title: "Cybersecurity Consultancy",
+    text: "Security strategy, architecture review, roadmap planning, and executive advisory for teams building mature defense programs.",
+  },
+  {
+    title: "Penetration Testing",
+    text: "Controlled testing for web apps, networks, cloud assets, and exposed services with clear findings, risk ratings, and remediation guidance.",
+  },
+  {
+    title: "Security Training",
+    text: "Practical awareness and technical training for employees, IT teams, analysts, and leaders responsible for cyber risk.",
+  },
+  {
+    title: "GRC Services",
+    text: "Governance, risk, compliance, ISO 27001 readiness, policy development, audit preparation, and continuous assurance programs.",
+  },
+  {
+    title: "Managed Detection & Response",
+    text: "24/7 monitoring, alert triage, threat hunting, and guided incident response across endpoints, networks, cloud, and logs.",
+  },
+  {
+    title: "Security Assessment & Hardening",
+    text: "Baseline reviews, vulnerability assessment, configuration hardening, and prioritized remediation plans for critical infrastructure.",
+  },
 ];
 
 export const grcSteps = [
@@ -195,7 +206,7 @@ export const faqs = [
   },
   {
     q: "Can you help us meet compliance requirements?",
-    a: "Absolutely. Our GRC services align your security posture with regulatory and industry frameworks like ISO 27001 through a structured, continuously-assured program.",
+    a: "Absolutely. Our services align your security posture with regulatory and industry frameworks like ISO 27001 through a structured, continuously-assured program.",
   },
   {
     q: "What's the difference between SIEM, EDR, and IDS/IPS?",
@@ -363,7 +374,7 @@ export const solutions = [
   { title: "Next-Gen SIEM", text: "Centralized detection and response across your whole estate.", img: img.siem1, to: "/products" },
   { title: "Advanced EDR", text: "Deep endpoint visibility with automated containment.", img: img.edr1, to: "/products" },
   { title: "Advanced IDS/IPS", text: "Real-time network threat detection and prevention.", img: img.ids1, to: "/products" },
-  { title: "GRC Services", text: "Turn compliance into a continuous, strategic advantage.", img: img.grcCompliance, to: "/grc" },
+  { title: "Services", text: "Consulting, testing, training, GRC, and managed security support.", img: img.grcCompliance, to: "/grc" },
 ];
 
 /* ---------- Coverage meters (animated bars) ---------- */
@@ -397,5 +408,7 @@ export const navLinks = [
   { to: "/about", label: "About" },
   { to: "/platform", label: "Platform" },
   { to: "/products", label: "Products" },
-  { to: "/grc", label: "GRC Services" },
+  { to: "/grc", label: "Services" },
+  { to: "/blog", label: "Blog" },
+  { to: "/admin", label: "Admin" },
 ];

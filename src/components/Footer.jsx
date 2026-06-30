@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { navLinks, company, products, social } from "../data/site.js";
+import { isEmailConfigured, sendWebsiteEmail } from "../lib/email.js";
 
 /* Inline social icons (no external deps) */
 const ICONS = {
@@ -17,22 +18,33 @@ const ICONS = {
 
 export default function Footer() {
   const year = new Date().getFullYear();
-  const [subscribed, setSubscribed] = useState(false);
+  const [subscribeStatus, setSubscribeStatus] = useState("idle");
   const statusRef = useRef(null);
 
-  const onSubscribe = (e) => {
+  const onSubscribe = async (e) => {
     e.preventDefault();
     const form = e.currentTarget;
     if (!form.checkValidity()) {
       form.reportValidity();
       return;
     }
-    setSubscribed(true);
-    form.reset();
-    // The form (with the focused submit button) unmounts — move focus to the
-    // status message so keyboard focus stays coherent with the SR announcement.
-    requestAnimationFrame(() => statusRef.current?.focus());
-    setTimeout(() => setSubscribed(false), 5000);
+
+    const formData = new FormData(form);
+    setSubscribeStatus("sending");
+
+    try {
+      await sendWebsiteEmail("Newsletter signup", {
+        from_email: formData.get("email"),
+        message: "Newsletter signup request.",
+      });
+      setSubscribeStatus("sent");
+      form.reset();
+      requestAnimationFrame(() => statusRef.current?.focus());
+      setTimeout(() => setSubscribeStatus("idle"), 5000);
+    } catch (error) {
+      setSubscribeStatus(isEmailConfigured() ? "error" : "config-error");
+      requestAnimationFrame(() => statusRef.current?.focus());
+    }
   };
 
   return (
@@ -44,9 +56,13 @@ export default function Footer() {
             <h3>Stay ahead of the threat curve</h3>
             <p>Security insights, product updates, and threat intelligence — straight to your inbox.</p>
           </div>
-          {subscribed ? (
+          {subscribeStatus === "sent" ? (
             <p ref={statusRef} tabIndex={-1} className="footer__news-ok" role="status">
-              ✓ You're subscribed — watch your inbox.
+              ? You're subscribed - watch your inbox.
+            </p>
+          ) : subscribeStatus === "error" || subscribeStatus === "config-error" ? (
+            <p ref={statusRef} tabIndex={-1} className="footer__news-ok footer__news-ok--error" role="status">
+              Could not send. Email {company.email}.
             </p>
           ) : (
             <form className="footer__news" onSubmit={onSubscribe} noValidate>
@@ -57,7 +73,9 @@ export default function Footer() {
                 placeholder="you@company.com"
                 aria-label="Email address"
               />
-              <button type="submit" className="btn btn--primary">Subscribe</button>
+              <button type="submit" className="btn btn--primary" disabled={subscribeStatus === "sending"}>
+                {subscribeStatus === "sending" ? "Sending..." : "Subscribe"}
+              </button>
             </form>
           )}
         </div>
@@ -102,7 +120,7 @@ export default function Footer() {
               {p.name}
             </Link>
           ))}
-          <Link to="/grc">GRC Services</Link>
+          <Link to="/grc">Services</Link>
         </nav>
 
         {/* Contact details */}

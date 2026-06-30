@@ -7,16 +7,20 @@ import Platform from "./pages/Platform.jsx";
 import Products from "./pages/Products.jsx";
 import GRC from "./pages/GRC.jsx";
 import Contact from "./pages/Contact.jsx";
+import Blog from "./pages/Blog.jsx";
+import Admin from "./pages/Admin.jsx";
 import NotFound from "./pages/NotFound.jsx";
 
 /* Per-route document titles (SEO + history/UX). */
 const TITLES = {
-  "/": "Beta Tech Hub — Your Trusted Shield in the Digital Era",
-  "/about": "About — Beta Tech Hub",
-  "/platform": "Platform — Beta Tech Hub",
-  "/products": "Products — Beta Tech Hub",
-  "/grc": "GRC Services — Beta Tech Hub",
-  "/contact": "Contact — Beta Tech Hub",
+  "/": "Beta Tech Hub - Your Trusted Shield in the Digital Era",
+  "/about": "About - Beta Tech Hub",
+  "/platform": "Platform - Beta Tech Hub",
+  "/products": "Products - Beta Tech Hub",
+  "/grc": "Services - Beta Tech Hub",
+  "/contact": "Contact - Beta Tech Hub",
+  "/blog": "Blog - Beta Tech Hub",
+  "/admin": "Admin - Beta Tech Hub",
 };
 
 /* Scroll to top + set the document title whenever the route changes. */
@@ -41,6 +45,8 @@ export default function App() {
           <Route path="/products" element={<Products />} />
           <Route path="/grc" element={<GRC />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/admin" element={<Admin />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
